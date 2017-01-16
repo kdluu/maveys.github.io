@@ -45,7 +45,7 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
-        for(int j = 1; j <= index; j++) {
+        for(var j = 1; j <= index; j++) {
             var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'png';
             var idol = new Image();
             idol.src = url;
@@ -58,7 +58,7 @@ $(document).ready(function() {
     function load_idol()
     {
         if(get_idol_group() === 'muse') {
-            for(int i = 1; i <= 15; i++) {
+            for(var i = 1; i <= 15; i++) {
                 switch(i) {
                     case 1:
                     case 2:
