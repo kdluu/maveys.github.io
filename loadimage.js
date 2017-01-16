@@ -5,7 +5,7 @@ $(document).ready(function() {
 	var placement = [0,0,0];
 	var saved_context;
 	var submit = 0;
-	
+
 	/* Default load Honoka */
 	load_help();
 	load_idol();
@@ -23,7 +23,7 @@ $(document).ready(function() {
 		var step_5 = "Step 5. Click on 'Apply Text'.";
 		var notice_1 = "All changes are final unfortunately meaning if there is a mistake";
 		var notice_2 = "Either reselect another background or select restart";
-		
+
 		context.save();
 		context.font = "25px motoyalmaruw3_mono";
 		context.fillStyle = 'white';
@@ -42,8 +42,8 @@ $(document).ready(function() {
 		context.fillText(notice_2, 125, 575);
 		context.restore();
 	}
-	
-	function load_idol() 
+
+	function load_idol()
 	{
 		var file_ext = {};
         file_ext[0]=".png";
@@ -56,12 +56,12 @@ $(document).ready(function() {
 				//$("#bg-list").empty();
 				$("#image-list").show();
 				$("#image-list").css("overflow-y", "scroll");
-				
+
 				$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
 					var filename = this.href.replace(window.location, "");
 					var idol = new Image();
 					idol.src = './assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/'+filename;
-					
+
 					idol.onload = function() {
 						$("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
 					}
@@ -70,7 +70,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	function load_bg()
 	{
 		var file_ext = {};
@@ -88,7 +88,7 @@ $(document).ready(function() {
 					var filename = this.href.replace(window.location, "");
 					var bg = new Image();
 					bg.src ="./assets/bg/"+filename;
-					
+
 					bg.onload = function() {
 						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'; height:'+bg.height*0.18+';display:inline-block;"/>');
 					}
@@ -97,18 +97,18 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	$("#restart").click(function() {
 		var canvas = document.getElementById('scene')
 		var context = canvas.getContext('2d');
 		context.clearRect(0,0,canvas.width,canvas.height);
 		load_help();
 	});
-	
+
 	function reset() {
 		placement = [0,0,0];
 	}
-	
+
 	function get_idol_group()
 	{
 		var group = "muse";
@@ -122,16 +122,17 @@ $(document).ready(function() {
 			case 'dia':
 			case 'kanan':
 			case 'mari':
-				group = "aqours";
-				break;
+			group = "aqours";
+			break;
 		}
 		return group;
 	}
+
 	/* Display all idols */
 	$("#idol-list").change(function() {
         load_idol();
     });
-	
+
 	function add_idol_name()
 	{
 		var image = new Image();
@@ -141,7 +142,7 @@ $(document).ready(function() {
 			image.onload = function() {
 			context.drawImage(image, 100, 640 - 225);
 			context.save();
-			
+
 			var text = $("#speaker").val();
 			context.font = "25px motoyalmaruw3_mono";
 			context.fillStyle = 'white';
@@ -153,7 +154,7 @@ $(document).ready(function() {
 			context.restore();
 		}
 	}
-	
+
 	function add_text(context)
 	{
 		var text_1 = $("#story_text_1").val();
@@ -170,10 +171,10 @@ $(document).ready(function() {
 		context.fillText(text_2, 125, 545);
 		context.fillText(text_3, 125, 580);
 		context.restore();
-		
+
 		add_idol_name();
 	}
-	
+
 	$("#apply").click(function(){
 		if($("#speaker").val() === "-1") {
 			$("#error").html("*Please select a speaker.");
@@ -183,22 +184,24 @@ $(document).ready(function() {
 		var canvas = document.getElementById('scene');
 		var context = canvas.getContext('2d');
 		image.src = "./assets/sprites/text.png";
+
 		image.onload = function() {
 			context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
 			add_text(context);
 		};
 		$("#error").html("");
 	});
-	
+
 	/* Choose background */
 	$("#bg-list").on('click','img',function(){
 		//window.open(this.src);
 		var canvas = document.getElementById('scene');
 		var context = canvas.getContext('2d');
 		//context.clearRect(0,0, canvas.width, canvas.height);
-		
+
 		var image = new Image();
 		image.src = this.src;
+        
 		if(image.complete) {
 			context.drawImage(image, 0, 0, image.width, image.height);
 			reset();
@@ -209,27 +212,27 @@ $(document).ready(function() {
 			};
 		}
 	});
-	
+
 	function add_speaker()
 	{
 		var speaker = $("#idol-list option:selected").text();
 		$("#speaker").append($('<option></option>').val(speaker).html(speaker));
 	}
-	
+
 	/* Choose idol */
 	$("#image-list").on('click', 'img', function() {
 		var canvas = document.getElementById('scene');
 		var context = canvas.getContext('2d');
-		
+
 		var image = new Image();
 		image.src = this.src;
-		
+
 		var width = $("#position").val();
-		
+
 		if(width == 0) {width = left_x;}
 		else if(width == 1) {width = mid_x;}
 		else {width = right_x;}
-		
+
 		if(image.complete) {
 			if(placement[$("#position").val()] == 0){
 				context.drawImage(image, width, 640 - (image.height * 0.7), image.width * 0.7, image.height * 0.7);
@@ -253,7 +256,7 @@ $(document).ready(function() {
 		}
 
 	});
-	
+
 	$("#download").on('click', function() {
 		var canvas = document.getElementById('scene');
 		var dataURL = canvas.toDataURL('image/png');
