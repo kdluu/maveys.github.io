@@ -47,7 +47,7 @@ $(document).ready(function() {
 	{
 		var file_ext = {};
        		file_ext[0]=".png";
-		var src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/honoka_01_01.png';
+		var src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/';
 		$.ajax({
 			url: src,
 			success: function(data) {
@@ -61,7 +61,7 @@ $(document).ready(function() {
 				$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
 					var filename = this.href.replace(window.location, "");
 					var idol = new Image();
-					idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/'+filename;
+					idol.src = src + filename;
 
 					idol.onload = function() {
 						$("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
