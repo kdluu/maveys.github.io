@@ -32,13 +32,13 @@ img {
 	height: 75%;
 	width: 22%;
 	float: left;
-	overflow-y: hidden;
+	overflow-y: scroll;
 }
 
 #bg-list {
 	height: 75%;
 	width: 22%;
 	float: right;
-	overflow-y: hidden;
+	overflow-y: scroll;
 }
 
