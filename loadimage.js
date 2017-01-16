@@ -65,7 +65,7 @@ $(document).ready(function() {
 	    $("#image-list").show();
 	    $("#image-list").css({'overflow-y': 'scroll'});
 	
-            for(var i = 1; i <= 15; i++) {
+            for(var i = 1; i <= 3; i++) {
                 switch(i) {
                     case 1:
                     case 2:
