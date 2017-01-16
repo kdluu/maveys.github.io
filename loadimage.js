@@ -76,7 +76,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: 'https://maveys.github.io/assets/bg',
+			url: 'https://maveys.github.io/assets/bg/',
 			success: function(data) {
 			//$("#image-list").append('<ul>');
 				//$("#image-list").empty();
