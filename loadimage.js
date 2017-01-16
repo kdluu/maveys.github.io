@@ -126,8 +126,9 @@ $(document).ready(function() {
 	{
 		var file_ext = {};
         file_ext[0]=".png";
+		var src = 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png';
 		$.ajax({
-			url: 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png',
+			url: src,
 			success: function(data) {
 			//$("#image-list").append('<ul>');
 				//$("#image-list").empty();
@@ -138,7 +139,7 @@ $(document).ready(function() {
 				//$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
 				//	var filename = this.href.replace(window.location, "");
 					var bg = new Image();
-					bg.src = url;//"https://mavveys.github.io/assets/bg/"+filename;
+					bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
 
 					bg.onload = function() {
 						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'; height:'+bg.height*0.18+';display:inline-block;"/>');
