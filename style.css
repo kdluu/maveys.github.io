@@ -1,11 +1,10 @@
 h1 {
-    position: absolute;
+    position: relative;
     text-align: center;
     font-family: motoyalmaruw3_mono;
     font-size: 40px;
 }
 body{
-	position: absolute;
 	background-color: lightpink;
 }
 
@@ -15,27 +14,21 @@ img {
 }
 
 #error {
-	position: absolute;
 	text-align: center;
 	margin: 0 auto;
 }
 
 #scene {
-    position: absolute;
     display: block;
     margin: 0 auto;
     background-image: "./assets/bg/001 - 2O1X0oi.png";
 }
 
 #ui {
-    position: absolute;
-	
 	text-align: center;
 	margin: 0 auto;
 }
 #image-list {
-    position: absolute;
-	
 	height: 75%;
 	width: 22%;
 	float: left;
@@ -43,8 +36,6 @@ img {
 }
 
 #bg-list {
-    position: absolute;
-	
 	height: 75%;
 	width: 22%;
 	float: right;
