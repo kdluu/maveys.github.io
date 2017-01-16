@@ -48,7 +48,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: './assets/girls/'+get_idol_group()+'/'+$("#idol-list").val(),
+			url: './assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
 			success: function(data) {
 				//$("#image-list").append('<ul>');
 				//$("#bg-list").hide();
@@ -201,7 +201,7 @@ $(document).ready(function() {
 
 		var image = new Image();
 		image.src = this.src;
-        
+
 		if(image.complete) {
 			context.drawImage(image, 0, 0, image.width, image.height);
 			reset();
