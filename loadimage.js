@@ -48,7 +48,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
+			url: 'https://github.com//maveys/maveys.github.io/tree/master/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
 			success: function(data) {
 				//$("#image-list").append('<ul>');
 				//$("#bg-list").hide();
@@ -76,7 +76,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: 'https://maveys.github.io/assets/bg/',
+			url: 'https://github.com/maveys/maveys.github.io/tree/master/assets/bg/',
 			success: function(data) {
 			//$("#image-list").append('<ul>');
 				//$("#image-list").empty();
@@ -137,7 +137,7 @@ $(document).ready(function() {
 	{
 		var image = new Image();
 		var context = document.getElementById('scene').getContext('2d');
-		image.src = "./assets/sprites/idol.png";
+		image.src = "https://github.com/maveys/maveys.github.io/blob/master/assets/sprites/idol.png";
 
 			image.onload = function() {
 			context.drawImage(image, 100, 640 - 225);
@@ -183,7 +183,7 @@ $(document).ready(function() {
 		var image = new Image();
 		var canvas = document.getElementById('scene');
 		var context = canvas.getContext('2d');
-		image.src = "./assets/sprites/text.png";
+		image.src = "https://github.com/maveys/maveys.github.io/blob/master/assets/sprites/text.png";
 
 		image.onload = function() {
 			context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
