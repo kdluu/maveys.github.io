@@ -50,9 +50,9 @@ $(document).ready(function() {
             var idol = new Image();
             idol.src = url;
             idol.onload = function() {
-		console.log('width: '+idol.width);
-		console.log('new: ' + idol.width*0.18);
-                $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
+		var width = idol.width * 0.18;
+		var height = idol.height * 0.18;
+                $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'; height:'+height+';display:inline-block;"/>');
             }
         }
     }
