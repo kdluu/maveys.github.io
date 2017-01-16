@@ -9,7 +9,7 @@ $(document).ready(function() {
 	/* Default load Honoka */
 	load_help();
 	load_idol();
-	//load_bg();
+	load_bg();
 
 	function load_help()
 	{
