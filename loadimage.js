@@ -49,7 +49,7 @@ $(document).ready(function() {
             var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'.png';
             var idol = new Image();
             idol.src = url;
-            idol.onload() = function() {
+            idol.onload = function() {
                 $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
             }
         }
