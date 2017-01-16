@@ -1,12 +1,12 @@
 <html>
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.js"></script>
     <link rel='stylesheet' type='text/css' href='./style.css'>
 	<link rel='stylesheet' type='text/css' href='./css/stylesheet.css' charset='utf-8'/>
-	
-    <script src="loadimage.js"></script>
+
+    <script src="./loadimage.js"></script>
 </head>
 <h1>LLSIF Scenario Creator</h1>
 <body>
@@ -52,18 +52,18 @@
 	<select id="speaker" name="speaker" size="1">
 		<option value="-1">Who's Speaking?</option>
 	</select>
-	
+
 	<button type="button" id="restart">Restart</button>
-	
+
 	<p></p><div id="error"></div>
-	
+
 	<p></p><label for="scene_text_1">Enter Text Row 1(Max 60 characters)</label>
 	<input type="text" id="story_text_1" style="width: 300px;" maxlength="60">
 	<p></p><label for="scene_text_2">Enter Text Row 2(Max 60 characters)</label>
 	<input type="text" id="story_text_2" style="width: 300px;" maxlength="60">
 	<p></p><label for="scene_text_3">Enter Text Row 3(Max 60 characters)</label>
 	<input type="text" id="story_text_3" style="width: 300px;" maxlength="60">
-	
+
 	<p></p><button type="button" id="apply">Apply Text</button>
 	<a href="#" class="button" id="download" download="scenario.png">Download Image</a>
 
