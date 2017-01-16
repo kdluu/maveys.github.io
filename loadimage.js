@@ -58,6 +58,11 @@ $(document).ready(function() {
     function load_idol()
     {
         if(get_idol_group() === 'muse') {
+	    $("#image-list").empty();
+	    //$("#bg-list").empty();
+	    $("#image-list").show();
+	    $("#image-list").css("overflow-y", "scroll");
+	
             for(var i = 1; i <= 15; i++) {
                 switch(i) {
                     case 1:
