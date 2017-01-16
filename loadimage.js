@@ -135,10 +135,10 @@ $(document).ready(function() {
 				$("#bg-list").empty();
 				$("#bg-list").show();
 				$("#bg-list").css("overflow-y", "scroll");
-				$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
-					var filename = this.href.replace(window.location, "");
+				//$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
+				//	var filename = this.href.replace(window.location, "");
 					var bg = new Image();
-					bg.src ="https://mavveys.github.io/assets/bg/"+filename;
+					bg.src = url;//"https://mavveys.github.io/assets/bg/"+filename;
 
 					bg.onload = function() {
 						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'; height:'+bg.height*0.18+';display:inline-block;"/>');
