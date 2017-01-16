@@ -46,7 +46,7 @@ $(document).ready(function() {
     function append_idol(i, index)
     {
         for(var j = 1; j <= index; j++) {
-            var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'png';
+            var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'.png';
             var idol = new Image();
             idol.src = url;
             idol.onload() = function() {
