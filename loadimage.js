@@ -143,7 +143,7 @@ $(document).ready(function() {
 					bg.onload = function() {
 						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'; height:'+bg.height*0.18+';display:inline-block;"/>');
 					}
-			});
+			//});
 			//$("#image-list").append('</ul>');
 			}
 		});
