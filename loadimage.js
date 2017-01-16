@@ -63,7 +63,7 @@ $(document).ready(function() {
 	    $("#image-list").empty();
 	    //$("#bg-list").empty();
 	    $("#image-list").show();
-	    $("#image-list").css("overflowY", "scroll");
+	    $("#image-list").css({'overflow-y': 'scroll'});
 	
             for(var i = 1; i <= 15; i++) {
                 switch(i) {
