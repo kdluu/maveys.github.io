@@ -43,7 +43,7 @@ $(document).ready(function() {
 		context.restore();
 	}
 
-    function append_idol(index)
+    function append_idol(i, index)
     {
         for(var j = 1; j <= index; j++) {
             var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'png';
@@ -71,13 +71,13 @@ $(document).ready(function() {
                     case 13:
                     case 14:
                     case 15:
-                        append_idol(4);
+                        append_idol(i,4);
                         break;
                     case 3:
-                        append_idol(2);
+                        append_idol(i,2);
                         break;
                     case 4:
-                        append_idol(3);
+                        append_idol(i,3);
                         break;
                     case 10:
                     case 11:
