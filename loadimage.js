@@ -48,7 +48,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: './assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
+			url: 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
 			success: function(data) {
 				//$("#image-list").append('<ul>');
 				//$("#bg-list").hide();
@@ -76,7 +76,7 @@ $(document).ready(function() {
 		var file_ext = {};
         file_ext[0]=".png";
 		$.ajax({
-			url: './assets/bg/',
+			url: 'https://maveys.github.io/assets/bg/',
 			success: function(data) {
 			//$("#image-list").append('<ul>');
 				//$("#image-list").empty();
