@@ -142,7 +142,7 @@ $(document).ready(function() {
 					bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
 
 					bg.onload = function() {
-						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'; height:'+bg.height*0.18+';display:inline-block;"/>');
+						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
 					}
 			//});
 			//$("#image-list").append('</ul>');
