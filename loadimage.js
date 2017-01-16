@@ -43,13 +43,56 @@ $(document).ready(function() {
 		context.restore();
 	}
 
-	function load_idol()
+    function append_idol(index)
+    {
+        for(int j = 1; j <= index; j++) {
+            var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'png';
+            var idol = new Image();
+            idol.src = url;
+            idol.onload() = function() {
+                $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
+            }
+        }
+    }
+
+    function load_idol()
+    {
+        if(get_idol_group() === 'muse') {
+            for(int i = 1; i <= 15; i++) {
+                switch(i) {
+                    case 1:
+                    case 2:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                        append_idol(4);
+                        break;
+                    case 3:
+                        append_idol(2);
+                        break;
+                    case 4:
+                        append_idol(3);
+                        break;
+                    case 10:
+                    case 11:
+                        break;
+                }
+            }
+        }
+    }
+
+	function load_idol_local()
 	{
 		var file_ext = {};
-       		file_ext[0]=".png";
-		var src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/';
+        file_ext[0]=".png";
 		$.ajax({
-			url: src,
+			url: 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
 			success: function(data) {
 				//$("#image-list").append('<ul>');
 				//$("#bg-list").hide();
@@ -61,7 +104,7 @@ $(document).ready(function() {
 				$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
 					var filename = this.href.replace(window.location, "");
 					var idol = new Image();
-					idol.src = src + filename;
+					idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/'+filename;
 
 					idol.onload = function() {
 						$("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
@@ -267,3 +310,4 @@ $(document).ready(function() {
 		this.href = dataURL;
 	});
 });
+
