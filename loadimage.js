@@ -8,9 +8,28 @@ $(document).ready(function() {
 
 	/* Default load Honoka */
 	load_help();
+	tmo_load();
 	//load_idol();
 	//load_bg();
-
+	function tmp_load()
+	{
+			//$("#image-list").append('<ul>');
+				//$("#bg-list").hide();
+				$("#image-list").empty();
+				//$("#bg-list").empty();
+				$("#image-list").show();
+				$("#image-list").css("overflow-y", "scroll");
+		var url = 'https://maveys.github.io/assets/girls/muse/honoka/honoka_01_01.png';
+		var idol = new Image();
+		idol.src = url;
+		idol.src = url;
+            	idol.onload = function() {
+			var width = idol.width * 0.18;
+			var height = idol.height * 0.18;
+			$("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
+            	}
+		
+	}
 	function load_help()
 	{
 		var context = document.getElementById('scene').getContext('2d');
