@@ -19,6 +19,7 @@ img {
 
 #scene {
 display:block;	
+	margin: 0 auto;
 }
 #image-list {
 	max-width: 22%;
