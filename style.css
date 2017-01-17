@@ -16,9 +16,11 @@ img {
 #error {
 	text-align: center;
 }
-
-#scene {
+#tmp {
 	position: absolute;
+}
+#scene {
+	
 display:block;	
 	margin: 0 auto;
 }
