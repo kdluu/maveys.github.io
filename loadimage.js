@@ -64,7 +64,7 @@ $(document).ready(function() {
 	    //$("#bg-list").empty();
 	   // $("#image-list").show();
 	    $("#image-list").css({'overflow-y': 'scroll'});
-		console.log("WIDTH: "+$("#image-list").width);
+		console.log("WIDTH: "+$("#image-list").width());
             for(var i = 1; i <= 3; i++) {
                 switch(i) {
                     case 1:
@@ -91,7 +91,7 @@ $(document).ready(function() {
                         break;
                 }
             }
-		console.log("NEW WIDTH: "+$("#image-list").width);
+		console.log("NEW WIDTH: "+$("#image-list").width());
         }
     }
 
