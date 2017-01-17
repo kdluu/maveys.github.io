@@ -17,14 +17,14 @@ img {
 	text-align: center;
 }
 #tmp {
-	
+	display:block;
 	margin: 0 auto;
 	position: absolute;
 	
 }
 #scene {
 	
-display:block;	
+	
 }
 #image-list {
 	height: 75%;
