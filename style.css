@@ -25,6 +25,7 @@ img {
 }
 
 #ui {
+	position: absolute;
 	text-align: center;
 	margin: 0 auto;
 }
