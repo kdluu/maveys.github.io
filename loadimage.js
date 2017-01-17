@@ -175,6 +175,9 @@ $(document).ready(function() {
 
 	function reset() {
 		placement = [0,0,0];
+		console.log('first: '+placement[0]);
+		console.log('second: '+placement[1]);
+		console.log('thrid: '+placement[2]);
 	}
 
 	function get_idol_group()
