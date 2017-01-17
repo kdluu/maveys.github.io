@@ -27,7 +27,7 @@ img {
 }
 
 #ui {
-	position: relative
+	position: absolute;
 	text-align: center;
 	margin: 0 auto;
 }
