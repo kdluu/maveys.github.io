@@ -18,12 +18,15 @@ img {
 }
 
 #scene {
-    display: block;
-    background-image: "./assets/bg/001 - 2O1X0oi.png";
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
 }
 
 #ui {
-	
 	text-align: center;
 	margin: 0 auto;
 }
