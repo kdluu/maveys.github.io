@@ -18,12 +18,11 @@ img {
 }
 
 #scene {
+	position: absolute;
 display:block;	
 	margin: 0 auto;
 }
 #image-list {
-	max-width: 22%;
-	max-height: 75%;
 	height: 75%;
 	width: 22%;
 	float: left;
