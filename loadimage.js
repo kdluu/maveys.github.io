@@ -171,6 +171,7 @@ $(document).ready(function() {
 		var context = canvas.getContext('2d');
 		context.clearRect(0,0,canvas.width,canvas.height);
 		load_help();
+		reset();
 	});
 
 	function reset() {
