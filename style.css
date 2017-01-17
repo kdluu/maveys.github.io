@@ -29,15 +29,15 @@ img {
 }
 
 #image-list {
-	height: 75%;
-	width: 22%;
+	height: 640px;
+	width: 100px;
 	float: left;
 	overflow-y: hidden;
 }
 
 #bg-list {
-	height: 75%;
-	width: 22%;
+	height: 640px;
+	width: 100px;
 	float: right;
 	overflow-y: hidden;
 }
