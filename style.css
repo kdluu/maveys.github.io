@@ -17,7 +17,9 @@ img {
 	text-align: center;
 }
 
-
+#scene {
+display:block;	
+}
 #image-list {
 	max-width: 22%;
 	max-height: 75%;
