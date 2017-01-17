@@ -27,9 +27,7 @@ img {
 }
 
 #ui {
-	position: absolute;
-	text-align: center;
-	margin: 0 auto;
+	display: block;
 }
 #image-list {
 	max-width: 22%;
@@ -37,13 +35,13 @@ img {
 	height: 75%;
 	width: 22%;
 	float: left;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
 #bg-list {
 	height: 75%;
 	width: 22%;
 	float: right;
-	overflow-y: scroll;
+	overflow-y: hidden;
 }
 
