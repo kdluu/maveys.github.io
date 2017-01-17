@@ -17,18 +17,7 @@ img {
 	text-align: center;
 }
 
-#scene {
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin:auto;
-}
 
-#ui {
-	display: block;
-}
 #image-list {
 	max-width: 22%;
 	max-height: 75%;
