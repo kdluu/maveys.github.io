@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 	/* Default load Honoka */
 	load_help();
-	tmp_load();
+	//tmp_load();
 	//load_idol();
 	//load_bg();
 	function tmp_load()
