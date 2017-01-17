@@ -30,15 +30,15 @@ img {
 
 #image-list {
 	height: 640px;
-	width: 100px;
+	width: 400px;
 	float: left;
-	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 #bg-list {
 	height: 640px;
-	width: 100px;
+	width: 400px;
 	float: right;
-	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
