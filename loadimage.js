@@ -15,10 +15,6 @@ $(document).ready(function() {
 	{
 			//$("#image-list").append('<ul>');
 				//$("#bg-list").hide();
-				$("#image-list").empty();
-				//$("#bg-list").empty();
-				$("#image-list").show();
-				$("#image-list").css("overflow-y", "scroll");
 		var url = 'https://maveys.github.io/assets/girls/muse/honoka/honoka_01_01.png';
 		var idol = new Image();
 		idol.src = url;
