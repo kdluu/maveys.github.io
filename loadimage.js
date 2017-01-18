@@ -7,10 +7,17 @@ $(document).ready(function() {
 	var submit = 0;
 
 	/* Default load Honoka */
-	load_help();
+	//load_help();
 	//tmp_load();
-	load_idol();
-	load_bg();
+	//load_idol();
+	//load_bg();
+
+    function preload()
+    {
+        load_help();
+        load_idol();
+        load_bg();
+    }
 	function tmp_load()
 	{
 			//$("#image-list").append('<ul>');
