@@ -9,8 +9,8 @@ $(document).ready(function() {
 	/* Default load Honoka */
 	load_help();
 	//tmp_load();
-	//load_idol();
-	//load_bg();
+	load_idol();
+	load_bg();
 	function tmp_load()
 	{
 			//$("#image-list").append('<ul>');
@@ -24,7 +24,7 @@ $(document).ready(function() {
 			var height = idol.height * 0.18;
 			$("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             	}
-		
+
 	}
 	function load_help()
 	{
@@ -138,7 +138,20 @@ $(document).ready(function() {
 		});
 	}
 
-	function load_bg()
+    function load_bg()
+    {
+        $("#bg-list").show();
+        $("#bg-list").css("overflow-y", "scroll");
+        for(int i = 1; i <= 100; i++) {
+            var bg = new Image();
+            bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').png';
+            bg.onload = function() {
+                $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+            }
+        }
+    }
+
+	function load_bg_local()
 	{
 		var file_ext = {};
         file_ext[0]=".png";
@@ -338,4 +351,3 @@ $(document).ready(function() {
 		this.href = dataURL;
 	});
 });
-
