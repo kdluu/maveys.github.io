@@ -145,6 +145,7 @@ $(document).ready(function() {
         for(var i = 1; i <= 100; i++) {
             var bg = new Image();
             bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').png';
+            console.log(bg.src);
             bg.onload = function() {
                 $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
             }
