@@ -25,7 +25,7 @@ $(document).ready(function() {
         bg.src = url1;
         $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
         finsih_time = d.getTime();
-        console.log("PNG: " + finish_time - start_time);
+        console.log("PNG: " + finish_time - begin_time);
 
         /* jpg */
         begin_time = d.getTime();
@@ -34,7 +34,7 @@ $(document).ready(function() {
         bg.src = url2;
         $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
         finsih_time = d.getTime();
-        console.log("JPG: " + finish_time - start_time);
+        console.log("JPG: " + finish_time - begin_time);
     }
 
 	function tmp_load()
