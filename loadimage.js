@@ -11,7 +11,9 @@ $(document).ready(function() {
 	//tmp_load();
 	//load_idol();
 	//load_bg();
-
+    document.onload = function() {
+        preload();
+    }
     function preload()
     {
         load_help();
