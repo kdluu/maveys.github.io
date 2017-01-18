@@ -142,7 +142,7 @@ $(document).ready(function() {
     {
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
-        for(int i = 1; i <= 100; i++) {
+        for(var i = 1; i <= 100; i++) {
             var bg = new Image();
             bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').png';
             bg.onload = function() {
