@@ -9,9 +9,33 @@ $(document).ready(function() {
 	/* Default load Honoka */
 	load_help();
 	//tmp_load();
-	load_idol();
-	load_bg();
-    
+	//load_idol();
+	load_bg_tmp();
+
+    function load_bg_tmp()
+    {
+        var d = new Date();
+        var finish_time;
+        var bg;
+        /* png */
+        var begin_time = d.getTime()
+        var url1 = 'https://maveys.github.io/assets/bg/bg (1).png';
+        bg = new Image();
+        bg.src = url1;
+        $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+        finsih_time = d.getTime() - begin_time;
+        console.log("PNG: " + finish_time);
+
+        /* jpg */
+        begin_time = d.getTime();
+        var url2 = 'https://maveys.github.io/assets/bg/bg (1).jpg';
+        bg = new Image();
+        bg.src = url2;
+        $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+        finsih_time = d.getTime() - begin_time;
+        console.log("JPG: " + finish_time);
+    }
+
 	function tmp_load()
 	{
 			//$("#image-list").append('<ul>');
@@ -66,8 +90,8 @@ $(document).ready(function() {
             var idol = new Image();
             idol.src = url;
             idol.onload = function() {
-		var width = idol.width * 0.18;
-		var height = idol.height * 0.18;
+		        var width = idol.width * 0.18;
+		        var height = idol.height * 0.18;
                 $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
         }
