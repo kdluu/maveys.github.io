@@ -126,7 +126,7 @@ $(document).ready(function() {
                     effect: "fadeIn",
                     container:  $("#image-list"),
                 });
-        
+
             });
 
     }
@@ -401,7 +401,7 @@ $(document).ready(function() {
 		else if(width == 1) {width = mid_x;}
 		else {width = right_x;}
 
-		if(image.complete) {
+		image.onload = function() {
 			if(placement[$("#position").val()] == 0){
 				context.drawImage(image, width, 640 - (image.height * 0.7), image.width * 0.7, image.height * 0.7);
 				placement[$("#position").val()] = 1;
@@ -410,19 +410,7 @@ $(document).ready(function() {
 			} else {
 				$("#error").html("*Choose another position");
 			}
-		} else {
-			image.onload = function() {
-				if(placement[$("#position").val()] == 0){
-					context.drawImage(image, width, 640 - (image.height * 0.7), image.width * 0.7, image.height * 0.7);
-					placement[$("#position").val()] = 1;
-					add_speaker();
-					$("#error").html("");
-				} else {
-					$("#error").html("*Choose another position");
-				}
-			}
 		}
-
 	});
 
 	$("#download").on('click', function() {
