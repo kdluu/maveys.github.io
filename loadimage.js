@@ -96,12 +96,12 @@ $(document).ready(function() {
 		context.restore();
 	}
 
-    function append_idol(i, index)
+    function append_idol(index)
     {
         var date = new Date();
         var start = date.getTime();
         for(var j = 1; j <= index; j++) {
-            var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'.png';
+            var url = 'https://maveys.github.io/assets/girls/'get_idol_group()'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'('+j+')';
             var idol = new Image();
             idol.src = url;
             idol.onload = function() {
@@ -116,40 +116,52 @@ $(document).ready(function() {
 
     function load_idol()
     {
-        if(get_idol_group() === 'muse') {
+        var index = 0;
 	    $("#image-list").empty();
-	    //$("#bg-list").empty();
-	   // $("#image-list").show();
+	    $("#image-list").show();
 	    $("#image-list").css({'overflow-y': 'scroll'});
-		console.log("WIDTH: "+$("#image-list").width());
-            for(var i = 1; i <= 3; i++) {
-                switch(i) {
-                    case 1:
-                    case 2:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 12:
-                    case 13:
-                    case 14:
-                    case 15:
-                        append_idol(i,4);
-                        break;
-                    case 3:
-                        append_idol(i,2);
-                        break;
-                    case 4:
-                        append_idol(i,3);
-                        break;
-                    case 10:
-                    case 11:
-                        break;
-                }
-            }
-		console.log("NEW WIDTH: "+$("#image-list").width());
+        switch($("#idol-list").val()) {
+            case 'eli':
+                index = 39;
+                break;
+            case 'hanayo':
+                index = 46;
+                break;
+            case 'honoka':
+                index = 47;
+                break;
+            case 'kotori':
+            case 'maki':
+            case 'rin':
+                index = 41;
+                break;
+            case 'nico':
+                index = 49;
+                break;
+            case 'nozomi':
+                index = 35;
+                break;
+            case 'umi':
+                index = 38;
+                break;
+            case 'chika':
+            case 'kanan':
+            case 'riko':
+            case 'ruby':
+                index = 6;
+                break;
+            case 'dia':
+                index = 9;
+            case 'hanamaru':
+            case 'yohane':
+            case 'you':
+                index = 5;
+                break;
+            case 'mari':
+                index = 7;
+                break;
         }
+        append_idol(index);
     }
 
 	function load_idol_local()
