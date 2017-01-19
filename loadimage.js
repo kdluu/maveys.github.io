@@ -11,6 +11,14 @@ $(document).ready(function() {
 	//tmp_load();
 	load_idol();
 	load_bg();
+    $("#search").click(function() {
+        var id = $("#get_by_id").val();
+        $("#image-list").empty();
+        $.getJSON('http://schoolido.lu/api/cards/'+id+'/', function(data) {
+            $("#image-list").show();
+            $("#image-list").append('<img src="'+data.transparent_image+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
+        });
+    });
 
     function search_by_id()
     {
