@@ -129,7 +129,7 @@ $(document).ready(function() {
             });
 
                 var url = 'https://maveys.github.io/assets/loading.gif';
-                $('.lazy-hidden').css('background-image', 'url("'+url+'")');
+                $('.lazy').css('background-image', 'url("'+url+'")');
 
     }
 
@@ -236,9 +236,9 @@ $(document).ready(function() {
                 });
             });
 
-                var url = 'https://maveys.github.io/assets/loading.gif';
-                $('.lazy-hidden').css('background-image', 'url("'+url+'")');
-        
+            var url = 'https://maveys.github.io/assets/loading.gif';
+            $('.lazy').css('background-image', 'url("'+url+'")');
+
     }
 
 	function load_bg_local()
