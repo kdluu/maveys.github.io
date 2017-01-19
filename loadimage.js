@@ -365,14 +365,14 @@ $(document).ready(function() {
 	function add_speaker()
 	{
 		var speaker = $("#idol-list option:selected").text();
-        var can_add = 0;
-        for(var i = 0; i < $("#speaker").children('option').length; i++) {
-            if($("#speaker").prop('selectedIndex', i).val() == $("#idol-list").val()) {
-                can_add = 1;
-                break;
-            }
-        }
-		if(can_add === 0) $("#speaker").append($('<option></option>').val(speaker).html(speaker));
+		$("#speaker").append($('<option></option>').val(speaker).html(speaker));
+
+        /* Update later */
+        var prev_option;
+        $('select[name=speaker] option').each(function() {
+            if (this.text == prev_option) $(this).remove();
+            prev_option = this.text;
+        })
 	}
 
 	/* Choose idol */
