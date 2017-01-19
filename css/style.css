@@ -43,5 +43,5 @@ img {
 }
 
 .lazy-hidden {
-    background: #eee url('../assets/loading.gif') no-repeat 50% 50%;
+    background: #eee url('https://maveys.github.io/assets/loading.gif') no-repeat 50% 50%;
 }
