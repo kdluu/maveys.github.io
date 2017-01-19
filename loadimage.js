@@ -18,11 +18,13 @@ $(document).ready(function() {
         var finish_time;
         var bg;
         $("#bg-list").show();
+        $("#bg-list").css("overflow-y", "scroll");
         /* png */
         var begin_time = d.getTime()
         var url1 = 'https://maveys.github.io/assets/bg/bg (1).png';
         bg = new Image();
         bg.src = url1;
+        console.log(bg.src);
         $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
         finish_time = d.getTime();
         console.log("START: "+begin_time);
