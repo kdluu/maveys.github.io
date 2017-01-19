@@ -75,11 +75,11 @@ $(document).ready(function() {
 		var idol = new Image();
 		idol.src = url;
 		idol.src = url;
-            	idol.onload = function() {
-			var width = idol.width * 0.18;
-			var height = idol.height * 0.18;
-			$("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
-            	}
+        idol.onload = function() {
+		    var width = idol.width * 0.18;
+		    var height = idol.height * 0.18;
+		    $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
+        }
 
 	}
 	function load_help()
@@ -121,17 +121,12 @@ $(document).ready(function() {
             $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
 
-
-            $(function() {
-                var url = 'https://maveys.github.io/assets/loading.gif';
-                $('#image-list img.lazy').css({
-                    "background": 'url('+url+') no-repeat center'
-                });
-                $("#image-list img.lazy").lazyload({
-                    effect: "fadeIn",
-                    container:  $("#image-list"),
-                });
+        $(function() {
+            $("#image-list img.lazy").lazyload({
+                effect: "fadeIn",
+                container:  $("#image-list"),
             });
+        });
     }
 
     function load_idol()
@@ -220,8 +215,6 @@ $(document).ready(function() {
 
     function load_bg()
     {
-        var bg;
-
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
@@ -229,17 +222,12 @@ $(document).ready(function() {
             $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
 
-
-            $(function() {
-                var url = 'https://maveys.github.io/assets/loading.gif';
-                $('#bg-list img.lazy-hidden').css({
-                    "background": 'url('+url+') no-repeat center'
-                });
-                $("#bg-list img.lazy").lazyload({
-                    effect: "fadeIn",
-                    container:  $("#bg-list"),
-                });
+        $(function() {
+            $("#bg-list img.lazy").lazyload({
+                effect: "fadeIn",
+                container:  $("#bg-list"),
             });
+        });
     }
 
 	function load_bg_local()
@@ -281,7 +269,11 @@ $(document).ready(function() {
 	function reset() {
 		placement = [0,0,0];
         $("#speaker").prop('selectedIndex', 0);
-        $("#speaker option").remove();
+        var select = document.getElementById("speaker");
+        for(var i = 0; i < select.length; i++) {
+            if(select.options[i].value != -1)
+                select.remove(i);
+        }
 	}
 
 	function get_idol_group()
@@ -385,13 +377,15 @@ $(document).ready(function() {
 
 	function add_speaker()
 	{
+        var can_add = 0;
 		var speaker = $("#idol-list option:selected").text();
-		$("#speaker").append($('<option></option>').val(speaker).html(speaker));
-
-        /* Update later */
-        $(".select option").each(function(){
-            $(this).siblings("[value='"+ this.value+"']").remove();
-        });
+        var select = $("#speaker");
+        for (var i = 0; i < select.length; i++) {
+            if(select.options[i].value == speaker)
+                can_add = -1;
+        }
+        console.log(can_add);
+		if(can_add === 0)$("#speaker").append($('<option></option>').val(speaker).html(speaker));
 	}
 
 	/* Choose idol */
