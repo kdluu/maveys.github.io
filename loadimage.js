@@ -367,7 +367,7 @@ $(document).ready(function() {
 		var speaker = $("#idol-list option:selected").text();
         var can_add = 0;
         for(var i = 0; i < $("#speaker").children('option').length; i++) {
-            if($("#speaker").val() == $("#idol-list").val()) {
+            if($("#speaker").prop('selectedIndex', i).val() == $("#idol-list").val()) {
                 can_add = 1;
                 break;
             }
