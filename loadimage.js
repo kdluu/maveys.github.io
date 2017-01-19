@@ -108,6 +108,7 @@ $(document).ready(function() {
             var idol = new Image();
             idol.onload = (function(value) {
                 return function(){
+                    console.log(value);
                     $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
                 }
         })(j);
