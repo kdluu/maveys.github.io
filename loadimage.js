@@ -369,11 +369,9 @@ $(document).ready(function() {
 		$("#speaker").append($('<option></option>').val(speaker).html(speaker));
 
         /* Update later */
-        var prev_option;
-        $('select[name=speaker] option').each(function() {
-            if (this.text == prev_option) $(this).remove();
-            prev_option = this.text;
-        })
+        $(".select option").each(function(){
+            $(this).siblings("[value='"+ this.value+"']").remove();
+        });
 	}
 
 	/* Choose idol */
