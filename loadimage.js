@@ -105,17 +105,13 @@ $(document).ready(function() {
             url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
             idol = new Image();
             idol.src = url;
-            if(idol.complete) {
-                var width = idol.width * 0.18;
-                var height = idol.height * 0.18;
-                $("#image-list").append('<img src="'+url+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
-            } else {
-                idol.onload = function() {
-    		        var width = idol.width * 0.18;
-    		        var height = idol.height * 0.18;
-                    $("#image-list").append('<img src="'+url+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
-                }
+            idol.onload = (function(value) {
+                return function(){
+		        var width = idol.width * 0.18;
+		        var height = idol.height * 0.18;
+                $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
+            })(i);
         }
         var finish = date.getTime();
         console.log("IDOL TIME: " + (finish - start));
