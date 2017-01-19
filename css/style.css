@@ -1,0 +1,44 @@
+h1 {
+    position: relative;
+    text-align: center;
+    font-family: motoyalmaruw3_mono;
+    font-size: 40px;
+}
+body{
+	background-color: lightpink;
+}
+
+img {
+	width: auto;
+	height: auto;
+}
+
+#error {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#scene {
+    display: block;
+    margin: 0 auto;
+}
+
+#ui {
+	text-align: center;
+	margin: 0 auto;
+}
+
+#image-list {
+	height: 640px;
+	width: 400px;
+	float: left;
+	overflow-x: hidden;
+}
+
+#bg-list {
+	height: 640px;
+	width: 400px;
+	float: right;
+	overflow-x: hidden;
+}
+
