@@ -108,7 +108,7 @@ $(document).ready(function() {
             idol.onload = function() {
 		        var width = idol.width * 0.18;
 		        var height = idol.height * 0.18;
-                $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
+                $("#image-list").append('<img src="'+url+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
         }
         var finish = date.getTime();
