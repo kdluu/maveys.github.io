@@ -118,7 +118,7 @@ $(document).ready(function() {
     {
         for(var i = 1; i <= index; i++) {
             var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+i+').png';
-            $("#image-list").append('<img src="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
+            $("#image-list").append('<img class="lazy" src="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
     }
 
