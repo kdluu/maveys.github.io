@@ -100,7 +100,7 @@ $(document).ready(function() {
     {
         var urls = [];
         for(var i = 0; i < 100; i++) {
-            urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png';);
+            urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
         }
         for(var j = 0; j <= index; j++) {
             var idol = new Image();
