@@ -9,7 +9,7 @@ $(document).ready(function() {
 	/* Default load Honoka */
 	load_help();
 	//tmp_load();
-	//load_idol();
+	load_idol();
 	load_bg_tmp();
 
     function load_bg_tmp()
@@ -98,6 +98,8 @@ $(document).ready(function() {
 
     function append_idol(i, index)
     {
+        var date = new Date();
+        var start = date.getTime();
         for(var j = 1; j <= index; j++) {
             var url = 'https://maveys.github.io/assets/girls/muse/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'_0'+i+'_0'+j+'.png';
             var idol = new Image();
@@ -108,6 +110,8 @@ $(document).ready(function() {
                 $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
         }
+        var finsih = date.getTime();
+        console.log("IDOL TIME: " finish - start);
     }
 
     function load_idol()
