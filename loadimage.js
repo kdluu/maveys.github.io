@@ -123,43 +123,49 @@ $(document).ready(function() {
 	    $("#image-list").css({'overflow-y': 'scroll'});
         switch($("#idol-list").val()) {
             case 'eli':
-                index = 39;
+                index = 42;
                 break;
             case 'hanayo':
-                index = 46;
+                index = 51;
                 break;
             case 'honoka':
-                index = 47;
+            case 'nico':
+                index = 55;
                 break;
             case 'kotori':
+                index = 45;
+                break;
             case 'maki':
             case 'rin':
-                index = 41;
-                break;
-            case 'nico':
-                index = 49;
+                index = 46;
                 break;
             case 'nozomi':
-                index = 35;
-                break;
             case 'umi':
-                index = 38;
+                index = 40;
                 break;
             case 'chika':
+                index = 19;
+                break;
             case 'kanan':
+                index = 15;
+                break;
             case 'riko':
-            case 'ruby':
-                index = 6;
+                index = 19;
                 break;
             case 'dia':
-                index = 9;
+                index = 22;
             case 'hanamaru':
-            case 'yohane':
-            case 'you':
-                index = 5;
+                index = 14;
                 break;
+            case 'yohane':
+                index = 21;
+                break;
+            case 'you':
+                index = 20;
+                break;
+            case 'ruby':
             case 'mari':
-                index = 7;
+                index = 17;
                 break;
         }
         append_idol(index);
@@ -196,7 +202,7 @@ $(document).ready(function() {
     function load_bg()
     {
         var bg;
-        
+
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
