@@ -98,23 +98,16 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
-        var url, idol;
-        var date = new Date();
-        var start = date.getTime();
+        var url;
         for(var j = 1; j <= index; j++) {
-            url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
-            idol = new Image();
-            idol.src = url;
+            var idol = new Image();
             idol.onload = (function(value) {
                 return function(){
-		        var width = idol.width * 0.18;
-		        var height = idol.height * 0.18;
-                $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
-            }
+                    $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
+                }
         })(j);
+        idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
         }
-        var finish = date.getTime();
-        console.log("IDOL TIME: " + (finish - start));
     }
 
     function load_idol()
