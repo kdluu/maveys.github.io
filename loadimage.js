@@ -111,7 +111,7 @@ $(document).ready(function() {
             }
         }
         var finish = date.getTime();
-        console.log("IDOL TIME: " + finish - start);
+        console.log("IDOL TIME: " + (finish - start));
     }
 
     function load_idol()
