@@ -98,15 +98,18 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
-        var url;
-        for(var j = 1; j <= index; j++) {
+        var urls = [];
+        for(var i = 0; i < 100; i++) {
+            urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png';);
+        }
+        for(var j = 0; j <= index; j++) {
             var idol = new Image();
             idol.onload = (function(value) {
                 return function(){
-                    $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
+                    $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
                 }
         })(j);
-        idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
+        idol.src = urls[j];
         }
     }
 
