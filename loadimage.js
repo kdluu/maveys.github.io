@@ -111,7 +111,7 @@ $(document).ready(function() {
 		        var height = idol.height * 0.18;
                 $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
-            })(i);
+        })(j);
         }
         var finish = date.getTime();
         console.log("IDOL TIME: " + (finish - start));
