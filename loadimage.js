@@ -110,7 +110,7 @@ $(document).ready(function() {
                 $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
             }
         }
-        var finsih = date.getTime();
+        var finish = date.getTime();
         console.log("IDOL TIME: " + finish - start);
     }
 
