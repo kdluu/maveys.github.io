@@ -116,8 +116,8 @@ $(document).ready(function() {
         // }
 
         for(var i = 1; i <= index; i++) {
-            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png';
-            $("#image-list").append('<img src="'+url+'"style="width:'+100+'px; height:'+200+'px;display:inline-block;"/>');
+            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+i+').png';
+            $("#image-list").append('<img src="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
     }
 
@@ -212,12 +212,8 @@ $(document).ready(function() {
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
-            bg = new Image();
-            bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
-            console.log(bg.src);
-            bg.onload = function() {
-                $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-            }
+            var src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
+            $("#bg-list").append('<img src="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
     }
 
