@@ -10,7 +10,7 @@ $(document).ready(function() {
 	load_help();
 	//tmp_load();
 	load_idol();
-	load_bg_tmp();
+	load_bg();
 
     function load_bg_tmp()
     {
