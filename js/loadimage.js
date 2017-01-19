@@ -121,18 +121,16 @@ $(document).ready(function() {
             $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
 
+        var url = 'https://maveys.github.io/assets/loading.gif';
+        $('#image-list img.lazy').css({
+            "background": 'url('+url+') no-repeat center'
+        });
             $(function() {
                 $("#image-list img.lazy").lazyload({
                     effect: "fadeIn",
                     container:  $("#image-list"),
                 });
             });
-
-                var url = 'https://maveys.github.io/assets/loading.gif';
-                $('#image-list img.lazy').css({
-                    "background": 'url('+url+') no-repeat center'
-                });
-
     }
 
     function load_idol()
@@ -231,7 +229,7 @@ $(document).ready(function() {
         }
 
         var url = 'https://maveys.github.io/assets/loading.gif';
-        $('#bg-list img.lazy').css({
+        $('#bg-list img.lazy-hidden').css({
             "background": 'url('+url+') no-repeat center'
         });
             $(function() {
