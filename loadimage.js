@@ -255,9 +255,7 @@ $(document).ready(function() {
 
 	function reset() {
 		placement = [0,0,0];
-		console.log('first: '+placement[0]);
-		console.log('second: '+placement[1]);
-		console.log('thrid: '+placement[2]);
+        $("#speaker").prop('selectedIndex', 0);
 	}
 
 	function get_idol_group()
@@ -367,7 +365,14 @@ $(document).ready(function() {
 	function add_speaker()
 	{
 		var speaker = $("#idol-list option:selected").text();
-		$("#speaker").append($('<option></option>').val(speaker).html(speaker));
+        var can_add = 0;
+        for(var i = 0; i < $("#speaker").children('option').length; i++) {
+            if($("#speaker").val() == $("#idol-list").val()) {
+                can_add = 1;
+                break;
+            }
+        }
+		if(can_add === 0) $("#speaker").append($('<option></option>').val(speaker).html(speaker));
 	}
 
 	/* Choose idol */
