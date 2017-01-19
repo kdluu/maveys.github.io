@@ -101,7 +101,7 @@ $(document).ready(function() {
         var date = new Date();
         var start = date.getTime();
         for(var j = 1; j <= index; j++) {
-            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').jpg';
+            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
             var idol = new Image();
             idol.src = url;
             idol.onload = function() {
