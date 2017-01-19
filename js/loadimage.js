@@ -379,7 +379,7 @@ $(document).ready(function() {
 	{
         var can_add = 0;
 		var speaker = $("#idol-list option:selected").text();
-        var select = $("#speaker");
+        var select = document.getElementById("speaker");
         for (var i = 0; i < select.length; i++) {
             if(select.options[i].value == speaker)
                 can_add = -1;
