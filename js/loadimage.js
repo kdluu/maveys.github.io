@@ -160,7 +160,7 @@ $(document).ready(function() {
                 index = 40;
                 break;
             case 'chika':
-                index = 19;
+                index = 18;
                 break;
             case 'kanan':
                 index = 15;
