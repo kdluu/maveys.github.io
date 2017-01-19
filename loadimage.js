@@ -256,6 +256,7 @@ $(document).ready(function() {
 	function reset() {
 		placement = [0,0,0];
         $("#speaker").prop('selectedIndex', 0);
+        $("#speaker option").remove();
 	}
 
 	function get_idol_group()
