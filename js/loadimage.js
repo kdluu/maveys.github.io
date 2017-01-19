@@ -120,6 +120,15 @@ $(document).ready(function() {
             var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+i+').png';
             $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
+
+            $(function() {
+                $("#image-list img.lazy").lazyload({
+                    effect: "fadeIn",
+                    container:  $("#image-list"),
+                });
+        
+            });
+
     }
 
     function load_idol()
@@ -216,19 +225,15 @@ $(document).ready(function() {
             var src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
             $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
+
+
+            $(function() {
+                $("#bg-list img.lazy").lazyload({
+                    effect: "fadeIn",
+                    container:  $("#bg-list"),
+                });
+            });
     }
-
-    $(function() {
-        $("#image-list img.lazy").lazyload({
-            effect: "fadeIn",
-            container:  $("#image-list"),
-        });
-
-        $("#bg-list img.lazy").lazyload({
-            effect: "fadeIn",
-            container:  $("#bg-list"),
-        });
-    });
 
 	function load_bg_local()
 	{
