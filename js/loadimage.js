@@ -219,9 +219,14 @@ $(document).ready(function() {
     }
 
     $(function() {
-        $("img.lazy").lazyload({
+        $("#image-list img.lazy").lazyload({
             effect: "fadeIn",
-            container:  $("#bg-list")
+            container:  $("#image-list"),
+        });
+
+        $("#bg-list img.lazy").lazyload({
+            effect: "fadeIn",
+            container:  $("#bg-list"),
         });
     });
 
@@ -360,15 +365,10 @@ $(document).ready(function() {
 		var image = new Image();
 		image.src = this.src;
 
-		if(image.complete) {
+		image.onload = function() {
 			context.drawImage(image, 0, 0, image.width, image.height);
 			reset();
-		} else {
-			image.onload = function() {
-				context.drawImage(image, 0, 0, image.width, image.height);
-				reset();
-			};
-		}
+        };
 	});
 
 	function add_speaker()
