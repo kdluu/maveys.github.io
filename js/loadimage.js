@@ -121,11 +121,12 @@ $(document).ready(function() {
             $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
         }
 
-        var url = 'https://maveys.github.io/assets/loading.gif';
-        $('#image-list img.lazy').css({
-            "background": 'url('+url+') no-repeat center'
-        });
+
             $(function() {
+                var url = 'https://maveys.github.io/assets/loading.gif';
+                $('#image-list img.lazy').css({
+                    "background": 'url('+url+') no-repeat center'
+                });
                 $("#image-list img.lazy").lazyload({
                     effect: "fadeIn",
                     container:  $("#image-list"),
@@ -228,11 +229,12 @@ $(document).ready(function() {
             $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
 
-        var url = 'https://maveys.github.io/assets/loading.gif';
-        $('#bg-list img.lazy-hidden').css({
-            "background": 'url('+url+') no-repeat center'
-        });
+
             $(function() {
+                var url = 'https://maveys.github.io/assets/loading.gif';
+                $('#bg-list img.lazy-hidden').css({
+                    "background": 'url('+url+') no-repeat center'
+                });
                 $("#bg-list img.lazy").lazyload({
                     effect: "fadeIn",
                     container:  $("#bg-list"),
