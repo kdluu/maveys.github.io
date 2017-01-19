@@ -98,11 +98,13 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
+        //ex chika 19 = 0+1 - 18+1 => 1-19
         var urls = [];
         for(var i = 0; i < index; i++) {
             urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
         }
-        for(var j = 0; j <= urls.length; j++) {
+        //ex chika 19 = 0 - 19
+        for(var j = 0; j < urls.length; j++) {
             var idol = new Image();
             idol.onload = (function(value) {
                 return function(){
