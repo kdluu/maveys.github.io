@@ -116,23 +116,6 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
-        //ex chika 19 = 0+1 - 18+1 => 1-19
-        // var urls = [];
-        // for(var i = 0; i < index; i++) {
-        //     urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
-        // }
-        // //ex chika 19 = 0 - 19
-        // for(var j = 0; j < urls.length; j++) {
-        //     var idol = new Image();
-        //     idol.src = urls[j];
-        //     idol.onload = (function(value) {
-        //         return function(){
-        //             console.log(value);
-        //             $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
-        //         }
-        // })(j);
-        // }
-
         for(var i = 1; i <= index; i++) {
             var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+i+').png';
             $("#image-list").append('<img src="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
@@ -223,6 +206,11 @@ $(document).ready(function() {
 		});
 	}
 
+    $("img.lazy").lazyload({
+        effect: "fadein";
+        container:  $("#bg-list");
+    });
+
     function load_bg()
     {
         var bg;
@@ -231,7 +219,7 @@ $(document).ready(function() {
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
             var src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
-            $("#bg-list").append('<img src="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
+            $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
     }
 
@@ -290,8 +278,8 @@ $(document).ready(function() {
 			case 'dia':
 			case 'kanan':
 			case 'mari':
-			group = "aqours";
-			break;
+			    group = "aqours";
+			    break;
 		}
 		return group;
 	}
