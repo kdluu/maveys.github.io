@@ -99,20 +99,25 @@ $(document).ready(function() {
     function append_idol(index)
     {
         //ex chika 19 = 0+1 - 18+1 => 1-19
-        var urls = [];
-        for(var i = 0; i < index; i++) {
-            urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
-        }
-        //ex chika 19 = 0 - 19
-        for(var j = 1; j <= urls.length; j++) {
-            var idol = new Image();
-            idol.src = urls[j];
-            idol.onload = (function(value) {
-                return function(){
-                    console.log(value);
-                    $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
-                }
-        })(j);
+        // var urls = [];
+        // for(var i = 0; i < index; i++) {
+        //     urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
+        // }
+        // //ex chika 19 = 0 - 19
+        // for(var j = 0; j < urls.length; j++) {
+        //     var idol = new Image();
+        //     idol.src = urls[j];
+        //     idol.onload = (function(value) {
+        //         return function(){
+        //             console.log(value);
+        //             $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
+        //         }
+        // })(j);
+        // }
+
+        for(var i = 1; i <= index; i++) {
+            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png';
+            $("#image-list").append('<img src="'+url+'"style="width:'+100+'px; height:'+200+'px;display:inline-block;"/>');
         }
     }
 
