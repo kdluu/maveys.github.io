@@ -98,11 +98,12 @@ $(document).ready(function() {
 
     function append_idol(index)
     {
+        var url, idol;
         var date = new Date();
         var start = date.getTime();
         for(var j = 1; j <= index; j++) {
-            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
-            var idol = new Image();
+            url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+j+').png';
+            idol = new Image();
             idol.src = url;
             idol.onload = function() {
 		        var width = idol.width * 0.18;
@@ -194,10 +195,12 @@ $(document).ready(function() {
 
     function load_bg()
     {
+        var bg;
+        
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
-            var bg = new Image();
+            bg = new Image();
             bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
             console.log(bg.src);
             bg.onload = function() {
