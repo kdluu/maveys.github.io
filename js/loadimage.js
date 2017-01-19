@@ -207,7 +207,7 @@ $(document).ready(function() {
 	}
 
     $("img.lazy").lazyload({
-        effect: "fadein";
+        effect: "fadein",
         container:  $("#bg-list");
     });
 
