@@ -128,10 +128,8 @@ $(document).ready(function() {
                 });
             });
 
-            $(function() {
                 var url = 'https://maveys.github.io/assets/loading.gif';
                 $('.lazy-hidden').css('background-image', 'url("'+url+'")');
-            });
 
     }
 
@@ -238,10 +236,9 @@ $(document).ready(function() {
                 });
             });
 
-            $(function() {
                 var url = 'https://maveys.github.io/assets/loading.gif';
                 $('.lazy-hidden').css('background-image', 'url("'+url+'")');
-            });
+        
     }
 
 	function load_bg_local()
