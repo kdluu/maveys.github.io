@@ -101,7 +101,7 @@ $(document).ready(function() {
         var date = new Date();
         var start = date.getTime();
         for(var j = 1; j <= index; j++) {
-            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'('+j+')';
+            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+'('+j+').jpg';
             var idol = new Image();
             idol.src = url;
             idol.onload = function() {
@@ -198,7 +198,7 @@ $(document).ready(function() {
         $("#bg-list").css("overflow-y", "scroll");
         for(var i = 1; i <= 100; i++) {
             var bg = new Image();
-            bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').png';
+            bg.src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
             console.log(bg.src);
             bg.onload = function() {
                 $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
