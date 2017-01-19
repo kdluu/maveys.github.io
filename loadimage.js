@@ -104,15 +104,15 @@ $(document).ready(function() {
             urls.push('https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+(i + 1)+').png');
         }
         //ex chika 19 = 0 - 19
-        for(var j = 0; j < urls.length; j++) {
+        for(var j = 1; j <= urls.length; j++) {
             var idol = new Image();
+            idol.src = urls[j];
             idol.onload = (function(value) {
                 return function(){
                     console.log(value);
                     $("#image-list").append('<img src="'+urls[value]+'"style="width:'+idol.width*0.18+'px; height:'+idol.height*0.18+'px;display:inline-block;"/>');
                 }
         })(j);
-        idol.src = urls[j];
         }
     }
 
