@@ -208,7 +208,7 @@ $(document).ready(function() {
 
     $("img.lazy").lazyload({
         effect: "fadein",
-        container:  $("#bg-list");
+        container:  $("#bg-list")
     });
 
     function load_bg()
