@@ -206,11 +206,6 @@ $(document).ready(function() {
 		});
 	}
 
-    $("img.lazy").lazyload({
-        effect: "fadein",
-        container:  $("#bg-list")
-    });
-
     function load_bg()
     {
         var bg;
@@ -222,6 +217,13 @@ $(document).ready(function() {
             $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
         }
     }
+
+    $(function() {
+        $("img.lazy").lazyload({
+            effect: "fadeIn",
+            container:  $("#bg-list")
+        });
+    });
 
 	function load_bg_local()
 	{
