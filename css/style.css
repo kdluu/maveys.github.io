@@ -42,6 +42,6 @@ img {
 	overflow-x: hidden;
 }
 
-.lazy-hidden {
+.lazy-hidden:after {
     background: #eee url('https://maveys.github.io/assets/loading.gif') no-repeat 50% 50%;
 }
