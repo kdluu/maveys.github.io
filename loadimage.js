@@ -19,28 +19,34 @@ $(document).ready(function() {
         var bg;
         $("#bg-list").show();
         $("#bg-list").css("overflow-y", "scroll");
+
         /* png */
         var begin_time = d.getTime()
         var url1 = 'https://maveys.github.io/assets/bg/bg (1).png';
         bg = new Image();
         bg.src = url1;
         console.log(bg.src);
-        $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-        finish_time = d.getTime();
-        console.log("START: "+begin_time);
-        console.log("FINSIH: "+finish_time);
-        console.log("PNG: " + (finish_time - begin_time));
+        bg.onload = function() {
+            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+            finish_time = d.getTime();
+            console.log("START: "+begin_time);
+            console.log("FINSIH: "+finish_time);
+            console.log("PNG: " + (finish_time - begin_time));
+
+        }
 
         /* jpg */
         begin_time = d.getTime();
         var url2 = 'https://maveys.github.io/assets/bg/test.jpg';
         bg = new Image();
         bg.src = url2;
-        $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-        finish_time = d.getTime();
-        console.log("START: "+begin_time);
-        console.log("FINSIH: "+finish_time);
-        console.log("JPG: " + (finish_time - begin_time));
+        bg.onload = function() {
+            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+            finish_time = d.getTime();
+            console.log("START: "+begin_time);
+            console.log("FINSIH: "+finish_time);
+            console.log("JPG: " + (finish_time - begin_time));
+        }
     }
 
 	function tmp_load()
