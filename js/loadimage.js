@@ -389,11 +389,15 @@ $(document).ready(function() {
 		var canvas = document.getElementById('scene');
 		var dataURL = canvas.toDataURL('image/png');
         if(canvas.msToBlob) {
-            var blob = canvas.msToBlob();
-            window.navigator.msSaveBlob(blob, 'scenario.png');
-        } else {
-            var dt = canvas.toDataURL();
-            this.href = dt;
-        }
+			var binary = atob(dataURL.split(',')[1]);
+			var array = [];
+			for( var i = 0; i < binary.length; i++) {
+				array.push(binary.charCodeAt(i));
+			}
+			var blob = new Blob([new Uint8Array(array)], {type: 'image/png'});
+			window.navigator.msSaveOrOpenBlob(blob, "scenario.png");
+		} else {
+			this.href = dataURL;
+		}
 	});
 });
