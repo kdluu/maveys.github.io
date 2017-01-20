@@ -3,9 +3,26 @@ $(document).ready(function() {
 	var mid_x = 100;
 	var right_x = 400;
 	var placement = [0,0,0];
-	var saved_context;
-	var submit = 0;
-
+    var num_of_images = {
+    	'eli': 42,
+    	'hanayo': 51,
+    	'honoka': 55,
+    	'nico': 55,
+    	'kotori': 45,
+    	'maki': 46,
+    	'rin': 46,
+    	'nozomi': 40,
+    	'umi': 40,
+    	'chika': 18,
+    	'kanan': 15,
+    	'riko': 19,
+    	'dia': 22,
+    	'hanamaru': 14,
+    	'yohane': 21,
+    	'you': 20,
+    	'ruby': 17,
+    	'mari': 17
+    };
 	/* Default load Honoka */
 	load_help();
 	//tmp_load();
@@ -131,58 +148,10 @@ $(document).ready(function() {
 
     function load_idol()
     {
-        var index = 0;
 	    $("#image-list").empty();
 	    $("#image-list").show();
 	    $("#image-list").css({'overflow-y': 'scroll'});
-        switch($("#idol-list").val()) {
-            case 'eli':
-                index = 42;
-                break;
-            case 'hanayo':
-                index = 51;
-                break;
-            case 'honoka':
-            case 'nico':
-                index = 55;
-                break;
-            case 'kotori':
-                index = 45;
-                break;
-            case 'maki':
-            case 'rin':
-                index = 46;
-                break;
-            case 'nozomi':
-            case 'umi':
-                index = 40;
-                break;
-            case 'chika':
-                index = 18;
-                break;
-            case 'kanan':
-                index = 15;
-                break;
-            case 'riko':
-                index = 19;
-                break;
-            case 'dia':
-                index = 22;
-            case 'hanamaru':
-                index = 14;
-                break;
-            case 'yohane':
-                index = 21;
-                break;
-            case 'you':
-                index = 20;
-                break;
-            case 'ruby':
-            case 'mari':
-                index = 17;
-                break;
-        }
-        append_idol(index);
+        append_idol(num_of_images[$("#idol-list").val()]);
     }
 
 	function load_idol_local()
