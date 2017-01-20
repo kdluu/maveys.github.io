@@ -419,9 +419,10 @@ $(document).ready(function() {
 	$("#download").on('click', function() {
 		var canvas = document.getElementById('scene');
 		var dataURL = canvas.toDataURL('image/png');
-		dataURL = dataURL.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
-		dataURL = dataURL.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
-
-		this.href = dataURL;
+		//dataURL = dataURL.replace(/^data:image\/[^;]*/, 'data:application/octet-stream');
+		//dataURL = dataURL.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;headers=Content-Disposition%3A%20attachment%3B%20filename=Canvas.png');
+        //this.href = dataURL;
+        var dt = canvas.toDataURL();
+        this.href = dt;
 	});
 });
