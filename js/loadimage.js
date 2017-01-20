@@ -356,6 +356,8 @@ $(document).ready(function() {
 			context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
 			add_text(context);
 		};
+        var dataURL = canvas.toDataURL();
+        document.getElementById('scene').src = dataURL;
 		$("#error").html("");
 	});
 
