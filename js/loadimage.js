@@ -9,7 +9,7 @@ $(document).ready(function() {
     	'honoka': 55,
     	'nico': 55,
     	'kotori': 45,
-    	'maki': 46,
+    	'maki': 45,
     	'rin': 46,
     	'nozomi': 40,
     	'umi': 40,
