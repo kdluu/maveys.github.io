@@ -26,6 +26,7 @@ img {
 #ui {
 	text-align: center;
 	margin: 0 auto;
+	width: 960px;
 }
 
 #image-list {
