@@ -388,16 +388,20 @@ $(document).ready(function() {
 	$("#download").on('click', function() {
 		var canvas = document.getElementById('scene');
 		var dataURL = canvas.toDataURL('image/png');
-        if(canvas.msToBlob) {
-			var binary = atob(dataURL.split(',')[1]);
-			var array = [];
-			for( var i = 0; i < binary.length; i++) {
-				array.push(binary.charCodeAt(i));
-			}
-			var blob = new Blob([new Uint8Array(array)], {type: 'image/png'});
-			window.navigator.msSaveOrOpenBlob(blob, "scenario.png");
-		} else {
-			this.href = dataURL;
-		}
+// 		if(canvas.msToBlob) {
+// 				var binary = atob(dataURL.split(',')[1]);
+// 				var array = [];
+// 				for( var i = 0; i < binary.length; i++) {
+// 					array.push(binary.charCodeAt(i));
+// 				}
+// 				var blob = new Blob([new Uint8Array(array)], {type: 'image/png'});
+// 				window.navigator.msSaveOrOpenBlob(blob, "scenario.png");
+// 			} else {
+// 				this.href = dataURL;
+// 		}
+		var img = new Image();
+		img.setAttribute('crossOrigin', 'anonymous');
+		img.src = url;
+		this.href = dataURL;
 	});
 });
