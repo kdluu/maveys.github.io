@@ -4,7 +4,7 @@ $(document).ready(function() {
 
     var encoder = new GIFEncoder();
     encoder.setRepeat(1); // repeat once
-    encoder.setDelay(3000); // every 3000 milliseconds new frame
+    encoder.setDelay(1500); // every 3000 milliseconds new frame
     encoder.start();
 
     $("#addFrame").click(function() {
