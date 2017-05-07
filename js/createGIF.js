@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var canvas;
-    var image;
+    var context;
 
     var encoder = new GIFEncoder();
     encoder.setRepeat(1); // repeat once
@@ -8,13 +8,10 @@ $(document).ready(function() {
     encoder.start();
 
     $("#addFrame").click(function() {
-        var img = new Image();
-        img.crossOrigin = "Anonymous";
         canvas = document.getElementById('scene');
-        var dataURL = canvas.toDataURL('image/png');
+        context = canvas.getContext('2d');
 
-        img.src = dataURL;
-        encoder.addFrame(img, true);
+        encoder.addFrame(context);
     });
 
     $("#gif").click(function() {
