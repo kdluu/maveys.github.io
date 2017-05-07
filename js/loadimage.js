@@ -401,7 +401,7 @@ $(document).ready(function() {
 // 		}
 		var img = new Image();
 		img.setAttribute('crossOrigin', 'anonymous');
-		img.src = url;
+		img.src = dataURL;
 		this.href = dataURL;
 	});
 });
