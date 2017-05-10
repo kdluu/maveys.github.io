@@ -3,6 +3,8 @@ $(document).ready(function() {
 	var mid_x = 100;
 	var right_x = 400;
 	var placement = [0,0,0];
+    var position_as_int = 0;
+    var position_as_string = "left";
     var num_of_images = {
     	'eli': 42,
     	'hanayo': 51,
@@ -23,11 +25,34 @@ $(document).ready(function() {
     	'ruby': 17,
     	'mari': 17
     };
+    var bg = new Image();
+    var left_img = new Image();
+    var right_img = new Image();
+    var middle_img = new Image();
+    var canvas_layout = {
+        background: "",
+        left_image: "",
+        middle_image: "",
+        right_image: "",
+        speaker_left: "",
+        speaker_middle: "",
+        speaker_right: ""
+    };
+    var imgs = [];
+    var img_count = 0;
 	/* Default load Honoka */
-	load_help();
+	//load_help();
 	//tmp_load();
-	load_idol();
+	//load_idol();
 	load_bg();
+    $("#change_bg").click(function() {
+            console.log(canvas_layout["background"]);
+            console.log(bg.src);
+            console.log(left_img.src);
+            console.log(middle_img.src);
+            console.log(right_img.src);
+    });
+
     $("#search").click(function() {
         var id = $("#get_by_id").val();
         $("#image-list").empty();
@@ -99,6 +124,7 @@ $(document).ready(function() {
         }
 
 	}
+
 	function load_help()
 	{
 		var context = document.getElementById('scene').getContext('2d');
@@ -131,28 +157,7 @@ $(document).ready(function() {
 		context.restore();
 	}
 
-    function append_idol(index)
-    {
-        for(var i = 1; i <= index; i++) {
-            var url = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/'+$("#idol-list").val()+' ('+i+').png';
-            $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
-        }
 
-        $(function() {
-            $("#image-list img.lazy").lazyload({
-                effect: "fadeIn",
-                container:  $("#image-list"),
-            });
-        });
-    }
-
-    function load_idol()
-    {
-	    $("#image-list").empty();
-	    $("#image-list").show();
-	    $("#image-list").css({'overflow-y': 'scroll'});
-        append_idol(num_of_images[$("#idol-list").val()]);
-    }
 
 	function load_idol_local()
 	{
@@ -182,51 +187,6 @@ $(document).ready(function() {
 		});
 	}
 
-    function load_bg()
-    {
-        $("#bg-list").show();
-        $("#bg-list").css("overflow-y", "scroll");
-        for(var i = 1; i <= 100; i++) {
-            var src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
-            $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
-        }
-
-        $(function() {
-            $("#bg-list img.lazy").lazyload({
-                effect: "fadeIn",
-                container:  $("#bg-list"),
-            });
-        });
-    }
-
-	function load_bg_local()
-	{
-		var file_ext = {};
-        file_ext[0]=".png";
-		var src = 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png';
-		$.ajax({
-			url: src,
-			success: function(data) {
-			//$("#image-list").append('<ul>');
-				//$("#image-list").empty();
-				//$("#image-list").hide();
-				$("#bg-list").empty();
-				$("#bg-list").show();
-				$("#bg-list").css("overflow-y", "scroll");
-				//$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
-				//	var filename = this.href.replace(window.location, "");
-					var bg = new Image();
-					bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
-
-					bg.onload = function() {
-						$("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-					}
-			//});
-			//$("#image-list").append('</ul>');
-			}
-		});
-	}
-
 	$("#restart").click(function() {
 		var canvas = document.getElementById('scene')
 		var context = canvas.getContext('2d');
@@ -239,16 +199,15 @@ $(document).ready(function() {
 		placement = [0,0,0];
         $("#speaker").prop('selectedIndex', 0);
         var select = document.getElementById("speaker");
-        for(var i = 0; i < select.length; i++) {
-            if(select.options[i].value != -1)
-                select.remove(i);
+        for(var i = 1; i < select.length; i++) {
+            console.log(select.remove(i));
         }
 	}
 
-	function get_idol_group()
+	function get_idol_group(position)
 	{
 		var group = "muse";
-		switch($("#idol-list").val()) {
+		switch($("#idol-list-"+position).val()) {
 			case 'chika':
 			case 'riko':
 			case 'you':
@@ -265,125 +224,350 @@ $(document).ready(function() {
 	}
 
 	/* Display all idols */
-	$("#idol-list").change(function() {
-        load_idol();
+	$("#idol-list-left").click(function() {
+        if ($("#idol-list-left").val() === "none") {
+            left_img.src = "";
+            canvas_layout.left_image = "";
+            canvas_layout.speaker_left = "";
+            pre_load();
+            return;
+        }
+        load_idol(0);
     });
 
-	function add_idol_name()
-	{
-		var image = new Image();
-		var context = document.getElementById('scene').getContext('2d');
-		image.src = "https://maveys.github.io/assets/sprites/idol.png";
-
-			image.onload = function() {
-			context.drawImage(image, 100, 640 - 225);
-			context.save();
-
-			var text = $("#speaker").val();
-			context.font = "25px motoyalmaruw3_mono";
-			context.fillStyle = 'white';
-			context.shadowColor = 'black';
-			context.shadowOffsetX = 1;
-			context.shadowOffsetY = 2;
-			context.scale(1,1);
-			context.fillText(text, 165, 450);
-			context.restore();
-		}
-	}
-
-	function add_text(context)
-	{
-		var text_1 = $("#story_text_1").val();
-		var text_2 = $("#story_text_2").val();
-		var text_3 = $("#story_text_3").val();
-		context.save()
-		context.font = "25px motoyalmaruw3_mono";
-		context.fillStyle = 'white';
-		context.shadowColor = 'black';
-		context.shadowOffsetX = 1;
-		context.shadowOffsetY = 2;
-		context.scale(1,1);
-		context.fillText(text_1, 125, 510);
-		context.fillText(text_2, 125, 545);
-		context.fillText(text_3, 125, 580);
-		context.restore();
-
-		add_idol_name();
-	}
-
-	$("#apply").click(function(){
-		if($("#speaker").val() === "-1") {
-			$("#error").html("*Please select a speaker.");
-			return;
-		}
-		var image = new Image();
-		var canvas = document.getElementById('scene');
-		var context = canvas.getContext('2d');
-		image.src = "https://maveys.github.io/assets/sprites/text.png";
-
-		image.onload = function() {
-			context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
-			add_text(context);
-		};
-        var dataURL = canvas.toDataURL();
-        document.getElementById('scene').src = dataURL;
-		$("#error").html("");
-	});
-
-	/* Choose background */
-	$("#bg-list").on('click','img',function(){
-		//window.open(this.src);
-		var canvas = document.getElementById('scene');
-		var context = canvas.getContext('2d');
-		//context.clearRect(0,0, canvas.width, canvas.height);
-
-		var image = new Image();
-		image.src = this.src;
-
-		image.onload = function() {
-			context.drawImage(image, 0, 0, image.width, image.height);
-			reset();
-        };
-	});
-
-	function add_speaker()
-	{
-        var can_add = 0;
-		var speaker = $("#idol-list option:selected").text();
-        var select = document.getElementById("speaker");
-        for (var i = 0; i < select.length; i++) {
-            if(select.options[i].value == speaker)
-                can_add = -1;
+    $("#idol-list-middle").click(function() {
+        if ($("#idol-list-middle").val() === "none") {
+            middle_img.src = "";
+            canvas_layout.middle_image = "";
+            canvas_layout.speaker_middle = "";
+            pre_load();
+            return;
         }
-        console.log(can_add);
-		if(can_add === 0)$("#speaker").append($('<option></option>').val(speaker).html(speaker));
-	}
+        load_idol(1);
+    });
 
-	/* Choose idol */
-	$("#image-list").on('click', 'img', function() {
-		var canvas = document.getElementById('scene');
-		var context = canvas.getContext('2d');
+    $("#idol-list-right").click(function() {
+        if ($("#idol-list-right").val() === "none") {
+            right_img.src = "";
+            canvas_layout.right_image = "";
+            canvas_layout.speaker_right = "";
+            pre_load();
+            return;
+        }
+        load_idol(2);
+    });
 
-		var image = new Image();
-		image.src = this.src;
+/*****************************************************************************************************************
+LOADING IDOL IMAGE FUNCTIONS
+*****************************************************************************************************************/
+/* Displays all idol images in div */
+function append_idol(index, position)
+{
+    document.getElementById('fade').style.display="block";
+    document.getElementById('image-list').style.display="block";
 
-		var width = $("#position").val();
+    var group = get_idol_group(position_as_string);
+    var idol = $("#idol-list-"+position_as_string).val();
+    for(var i = 1; i <= index; i++) {
+        var url = 'https://maveys.github.io/assets/girls/'+group+'/'+idol+'/'+idol+' ('+i+').png';
+        console.log(url);
+        $("#image-list").append('<img class="lazy" data-original="'+url+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
+    }
 
-		if(width == 0) {width = left_x;}
-		else if(width == 1) {width = mid_x;}
-		else {width = right_x;}
+    $(function() {
+        $("#image-list img.lazy").lazyload({
+            effect: "fadeIn",
+            container:  $("#image-list"),
+        });
+    });
 
-		image.onload = function() {
-			if(placement[$("#position").val()] == 0){
-				context.drawImage(image, width, 640 - (image.height * 0.7), image.width * 0.7, image.height * 0.7);
-				placement[$("#position").val()] = 1;
-				add_speaker();
-				$("#error").html("");
-			} else {
-				$("#error").html("*Choose another position");
-			}
-		}
-	});
+    $('#close').on('click', function() {
+        close_image_window();
+    });
+}
+
+function load_idol(position)
+{
+    position_as_int = position;
+    switch(position) {
+        case 0:
+            position_as_string =  "left";
+            break;
+        case 1:
+            position_as_string = "middle";
+            break;
+        case 2:
+            position_as_string = "right";
+            break;
+    }
+    $("#image-list").empty();
+    $("#image-list").show();
+    $("#image-list").css({'overflow-y': 'scroll'});
+    append_idol(num_of_images[$("#idol-list-"+position_as_string).val()], position);
+}
+
+/* Applies chosen Idol to canvas */
+$("#image-list").on('click', 'img', function() {
+    var canvas = document.getElementById('scene');
+    var context = canvas.getContext('2d');
+
+    var image = new Image();
+    image.src = this.src;
+
+    var width = position_as_int;
+    switch(position_as_string) {
+        case "left":
+            canvas_layout.left_image = image.src;
+            canvas_layout.speaker_left = $("#idol-list-"+position_as_string+" option:selected").text();
+            left_img.src = image.src;
+            break;
+        case "middle":
+            canvas_layout.middle_image = image.src;
+            canvas_layout.speaker_middle = $("#idol-list-"+position_as_string+" option:selected").text();
+            middle_img.src = image.src;
+            break;
+        case "right":
+            canvas_layout.right_image = image.src;
+            canvas_layout.speaker_right = $("#idol-list-"+position_as_string+" option:selected").text();
+            right_img.src = image.src;
+            break;
+    }
+    pre_load();
+    close_image_window();
+});
+
+/*****************************************************************************************************************
+LOADING BACKGROUND IMAGE FUNCTIONS
+*****************************************************************************************************************/
+/* Loads backgrounds to allow users to choose from */
+function load_bg()
+{
+    document.getElementById('fade').style.display="block";
+    document.getElementById('bg-list').style.display="block";
+    $("#cancel").append('<button type="button" id="close">Close</button>');
+    $("#image-list").append('<br>');
+    $('#close').on('click', function() {
+        close_image_window();
+    });
+    $("#bg-list").css("overflow-y", "scroll");
+    for(var i = 1; i <= 100; i++) {
+        var src = 'https://maveys.github.io/assets/bg/bg (' + i + ').jpg';
+        $("#bg-list").append('<img class="lazy" data-original="'+ src +'"style="width:'+172.79999999999998+'px; height:'+115.19999999999999+'px;display:inline-block;"/>');
+    }
+
+    $(function() {
+        $("#bg-list img.lazy").lazyload({
+            effect: "fadeIn",
+            container:  $("#bg-list"),
+        });
+    });
+}
+
+/* function load_bg_local()
+{
+    var file_ext = {};
+    file_ext[0]=".png";
+    var src = 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png';
+    $.ajax({
+        url: src,
+        success: function(data) {
+        //$("#image-list").append('<ul>');
+            //$("#image-list").empty();
+            //$("#image-list").hide();
+            $("#bg-list").empty();
+            $("#bg-list").show();
+            $("#bg-list").css("overflow-y", "scroll");
+            //$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
+            //	var filename = this.href.replace(window.location, "");
+                var bg = new Image();
+                bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
+
+                bg.onload = function() {
+                    $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+                }
+        //});
+        //$("#image-list").append('</ul>');
+        }
+    });
+} */
+
+/* Applies Background to the canvas */
+$("#bg-list").on('click','img',function(){
+    //window.open(this.src);
+    var canvas = document.getElementById('scene');
+    var context = canvas.getContext('2d');
+    //context.clearRect(0,0, canvas.width, canvas.height);
+
+    var image = new Image();
+    image.src = this.src;
+    canvas_layout.background = image.src;
+    bg.src = image.src;
+    image.onload = function() {
+        context.drawImage(image, 0, 0, image.width, image.height);
+        reset();
+        close_image_window();
+    };
+});
+
+/* Renders canvas after image changes, i.e. Idol, bg, or text changes */
+function render_canvas()
+{
+    var canvas = document.getElementById('scene');
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    var width;
+    var image = new Image();
+    image.src = bg.src;
+    context.drawImage(image, 0, 0, image.width, image.height);
+    if (left_img.src != "") {
+        image.src = imgs[1].src;
+        width = left_x;
+        context.drawImage(imgs[1], width, 640 - (imgs[1].height * 0.7), imgs[1].width * 0.7, imgs[1].height * 0.7);
+    }
+    if (middle_img.src != "") {
+        image.src = imgs[2].src;
+        width = mid_x;
+        context.drawImage(imgs[2], width, 640 - (image.height * 0.7), image.width * 0.7, image.height * 0.7);
+    }
+    if (right_img.src != "") {
+        image.src = imgs[3].src;
+        width = right_x;
+        context.drawImage(imgs[3], width, 640 - (imgs[3].height * 0.7), imgs[3].width * 0.7, imgs[3].height * 0.7);
+    }
+}
+/*****************************************************************************************************************
+APPLYING TEXT AND SPEAKER FUNCTIONS
+*****************************************************************************************************************/
+/* Append Idol Name as an options */
+function add_speaker()
+{
+    $("#speaker").find('option').not(':first').remove();
+    if(canvas_layout.speaker_left != "")  $("#speaker").append($('<option></option>').val(canvas_layout.speaker_left).html(canvas_layout.speaker_left));
+        console.log('added: ' + canvas_layout.speaker_left);
+    if(canvas_layout.speaker_middle != "") $("#speaker").append($('<option></option>').val(canvas_layout.speaker_middle).html(canvas_layout.speaker_middle));
+        console.log('added: ' + canvas_layout.speaker_middle);
+    if(canvas_layout.speaker_right != "") $("#speaker").append($('<option></option>').val(canvas_layout.speaker_right).html(canvas_layout.speaker_right));
+        console.log('added: ' + canvas_layout.speaker_right);
+}
+
+/* Applies Idol name to the canvas */
+function add_idol_name()
+{
+    var image = new Image();
+    var context = document.getElementById('scene').getContext('2d');
+    image.src = "https://maveys.github.io/assets/sprites/idol.png";
+
+        image.onload = function() {
+        context.drawImage(image, 100, 640 - 225);
+        context.save();
+
+        var text = $("#speaker").val();
+        context.font = "25px motoyalmaruw3_mono";
+        context.fillStyle = 'white';
+        context.shadowColor = 'black';
+        context.shadowOffsetX = 1;
+        context.shadowOffsetY = 2;
+        context.scale(1,1);
+        context.fillText(text, 165, 450);
+        context.restore();
+    }
+}
+
+/* Applies text to the canvas */
+function add_text(context)
+{
+    var text_1 = $("#story_text_1").val();
+    var text_2 = $("#story_text_2").val();
+    var text_3 = $("#story_text_3").val();
+    context.save()
+    context.font = "25px motoyalmaruw3_mono";
+    context.fillStyle = 'white';
+    context.shadowColor = 'black';
+    context.shadowOffsetX = 1;
+    context.shadowOffsetY = 2;
+    context.scale(1,1);
+    context.fillText(text_1, 125, 510);
+    context.fillText(text_2, 125, 545);
+    context.fillText(text_3, 125, 580);
+    context.restore();
+
+    add_idol_name();
+}
+
+/* Applies text and speaker name to the canvas */
+$("#apply").click(function(){
+    if($("#speaker").val() === "-1") {
+        $("#error").html("*Please select a speaker.");
+        return;
+    }
+    var image = new Image();
+    var canvas = document.getElementById('scene');
+    var context = canvas.getContext('2d');
+    render_canvas();
+    image.src = "https://maveys.github.io/assets/sprites/text.png";
+
+    image.onload = function() {
+        context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
+        add_text(context);
+    };
+    var dataURL = canvas.toDataURL();
+    document.getElementById('scene').src = dataURL;
+    $("#error").html("");
+});
+
+/*****************************************************************************************************************
+MAINAINANCE FUNCTIONS
+*****************************************************************************************************************/
+function close_image_window() {
+    document.getElementById('image-list').style.display='none';
+    document.getElementById('bg-list').style.display='none';
+    document.getElementById('fade').style.display='none';
+}
+
+function get_num_loaded_images()
+{
+    var count = 0;
+
+    if (canvas_layout.background != "") count++;
+    if (canvas_layout.left_image != "") count++;
+    if (canvas_layout.middle_image != "") count++;
+    if (canvas_layout.right_image != "") count++;
+
+    return count;
+}
+
+function pre_load() {
+    imgs = [];
+    img_count = 0;
+    for (var i = 0; i < 4 ; i++) {
+        var image = new Image();
+        var repeat = false;
+        imgs.push(image);
+        image.onload = function() {
+            if (repeat) return;
+            render_canvas();
+            add_speaker();
+            repeat = true;
+        }
+        switch (i) {
+            case 0:
+                image.src = canvas_layout["background"];
+                break;
+            case 1:
+                image.src = canvas_layout["left_image"];
+                break;
+            case 2:
+                image.src = canvas_layout["middle_image"];
+                break;
+            case 3:
+                image.src = canvas_layout["right_image"];
+                break;
+        }
+    }
+}
+/*****************************************************************************************************************
+IMAGE DOWNLOAD FUNCTIONS
+*****************************************************************************************************************/
 
 	$("#download").on('click', function() {
 		var canvas = document.getElementById('scene');

@@ -32,17 +32,17 @@
     </script> -->
 </head>
 <h1>LLSIF Scenario Creator</h1>
-<body>
+<body id="home">
 
-<div id='image-list'></div>
-
-<div id='bg-list'></div>
+<div id="fade" class="black_overlay"></div>
+<div class="popup-idol" id='image-list'><div class="cancel" id="cancel"><button type="button">CLOSE</button></div></div>
+<div class="popup-idol" id='bg-list'></div>
 
 <canvas id="scene" width="960" height="640"></canvas>
 
 <div id='ui'>
-	<label for="idol">Select Idol</label>
-	<select id="idol-list" name="idol" size="1">
+	<label for="idol">Left Idol</label>
+	<select id="idol-list-left" name="idol" size="1">
 		<option value="honoka">Honoka</option>
 		<option value="kotori">Kotori</option>
 		<option value="umi">Umi</option>
@@ -62,7 +62,59 @@
 		<option value="kanan">Kanan</option>
 		<option value="dia">Dia</option>
 		<option value="other">Other</option>
+        <option selected="selected" value="none">None</option>
 	</select>
+
+    <label for="idol">Middle Idol</label>
+    <select id="idol-list-middle" name="idol" size="1">
+        <option value="honoka">Honoka</option>
+        <option value="kotori">Kotori</option>
+        <option value="umi">Umi</option>
+        <option value="eli">Eli</option>
+        <option value="nozomi">Nozomi</option>
+        <option value="nico">Nico</option>
+        <option value="maki">Maki</option>
+        <option value="rin">Rin</option>
+        <option value="hanayo">Hanayo</option>
+        <option value="chika">Chika</option>
+        <option value="you">You</option>
+        <option value="riko">Riko</option>
+        <option value="hanamaru">Hanamaru</option>
+        <option value="ruby">Ruby</option>
+        <option value="yohane">Yohane</option>
+        <option value="mari">Mari</option>
+        <option value="kanan">Kanan</option>
+        <option value="dia">Dia</option>
+        <option value="other">Other</option>
+        <option selected="selected" value="none">None</option>
+    </select>
+
+    <label for="idol">Right Idol</label>
+    <select id="idol-list-right" name="idol" size="1">
+        <option value="honoka">Honoka</option>
+        <option value="kotori">Kotori</option>
+        <option value="umi">Umi</option>
+        <option value="eli">Eli</option>
+        <option value="nozomi">Nozomi</option>
+        <option value="nico">Nico</option>
+        <option value="maki">Maki</option>
+        <option value="rin">Rin</option>
+        <option value="hanayo">Hanayo</option>
+        <option value="chika">Chika</option>
+        <option value="you">You</option>
+        <option value="riko">Riko</option>
+        <option value="hanamaru">Hanamaru</option>
+        <option value="ruby">Ruby</option>
+        <option value="yohane">Yohane</option>
+        <option value="mari">Mari</option>
+        <option value="kanan">Kanan</option>
+        <option value="dia">Dia</option>
+        <option value="other">Other</option>
+        <option selected="selected" value="none">None</option>
+    </select>
+
+    <button type="button" id="change_bg">Change Background</button>
+    <br>
 
     <label for="getID">By ID:</label>
     <input type="text" id="get_by_id">
