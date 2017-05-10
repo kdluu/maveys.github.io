@@ -40,90 +40,8 @@ $(document).ready(function() {
     };
     var imgs = [];
     var img_count = 0;
-	/* Default load Honoka */
-	//load_help();
-	//tmp_load();
-	//load_idol();
+
 	load_bg();
-    $("#change_bg").click(function() {
-            console.log(canvas_layout["background"]);
-            console.log(bg.src);
-            console.log(left_img.src);
-            console.log(middle_img.src);
-            console.log(right_img.src);
-    });
-
-    $("#search").click(function() {
-        var id = $("#get_by_id").val();
-        $("#image-list").empty();
-        $.getJSON('https://schoolido.lu/api/cards/'+id+'/', function(data) {
-            $("#image-list").show();
-            $("#image-list").append('<img src="'+data.transparent_image+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
-        });
-    });
-
-    function search_by_id()
-    {
-        var id = $("#get_by_id").val();
-        $("#image-list").empty();
-        $.getJSON('http://schoolido.lu/api/cards/'+id+'/', function(data) {
-            $("#image-list").show();
-            $("#image-list").append('<img src="'+data.transparent_image+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
-        });
-    }
-
-    function load_bg_tmp()
-    {
-        var d = new Date();
-        var finish_time;
-        var bg;
-        $("#bg-list").show();
-        $("#bg-list").css("overflow-y", "scroll");
-
-        /* png */
-        var begin_time = d.getTime()
-        var url1 = 'https://maveys.github.io/assets/bg/bg (1).png';
-        bg = new Image();
-        bg.src = url1;
-        console.log(bg.src);
-        bg.onload = function() {
-            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-            finish_time = d.getTime();
-            console.log("START: "+begin_time);
-            console.log("FINSIH: "+finish_time);
-            console.log("PNG: " + (finish_time - begin_time));
-
-        }
-
-        /* jpg */
-        begin_time = d.getTime();
-        var url2 = 'https://maveys.github.io/assets/bg/test.jpg';
-        bg = new Image();
-        bg.src = url2;
-        bg.onload = function() {
-            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-            finish_time = d.getTime();
-            console.log("START: "+begin_time);
-            console.log("FINSIH: "+finish_time);
-            console.log("JPG: " + (finish_time - begin_time));
-        }
-    }
-
-	function tmp_load()
-	{
-			//$("#image-list").append('<ul>');
-				//$("#bg-list").hide();
-		var url = 'https://maveys.github.io/assets/girls/muse/honoka/honoka_01_01.png';
-		var idol = new Image();
-		idol.src = url;
-		idol.src = url;
-        idol.onload = function() {
-		    var width = idol.width * 0.18;
-		    var height = idol.height * 0.18;
-		    $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
-        }
-
-	}
 
 	function load_help()
 	{
@@ -157,36 +75,6 @@ $(document).ready(function() {
 		context.restore();
 	}
 
-
-
-	function load_idol_local()
-	{
-		var file_ext = {};
-        file_ext[0]=".png";
-		$.ajax({
-			url: 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
-			success: function(data) {
-				//$("#image-list").append('<ul>');
-				//$("#bg-list").hide();
-				$("#image-list").empty();
-				//$("#bg-list").empty();
-				$("#image-list").show();
-				$("#image-list").css("overflow-y", "scroll");
-
-				$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
-					var filename = this.href.replace(window.location, "");
-					var idol = new Image();
-					idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/'+filename;
-
-					idol.onload = function() {
-						$("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
-					}
-				});
-				//$("#image-list").append('</ul>');
-			}
-		});
-	}
-
 	$("#restart").click(function() {
 		var canvas = document.getElementById('scene')
 		var context = canvas.getContext('2d');
@@ -194,68 +82,6 @@ $(document).ready(function() {
 		load_help();
 		reset();
 	});
-
-	function reset() {
-		placement = [0,0,0];
-        $("#speaker").prop('selectedIndex', 0);
-        var select = document.getElementById("speaker");
-        for(var i = 1; i < select.length; i++) {
-            console.log(select.remove(i));
-        }
-	}
-
-	function get_idol_group(position)
-	{
-		var group = "muse";
-		switch($("#idol-list-"+position).val()) {
-			case 'chika':
-			case 'riko':
-			case 'you':
-			case 'hanamaru':
-			case 'ruby':
-			case 'yohane':
-			case 'dia':
-			case 'kanan':
-			case 'mari':
-			    group = "aqours";
-			    break;
-		}
-		return group;
-	}
-
-	/* Display all idols */
-	$("#idol-list-left").click(function() {
-        if ($("#idol-list-left").val() === "none") {
-            left_img.src = "";
-            canvas_layout.left_image = "";
-            canvas_layout.speaker_left = "";
-            pre_load();
-            return;
-        }
-        load_idol(0);
-    });
-
-    $("#idol-list-middle").click(function() {
-        if ($("#idol-list-middle").val() === "none") {
-            middle_img.src = "";
-            canvas_layout.middle_image = "";
-            canvas_layout.speaker_middle = "";
-            pre_load();
-            return;
-        }
-        load_idol(1);
-    });
-
-    $("#idol-list-right").click(function() {
-        if ($("#idol-list-right").val() === "none") {
-            right_img.src = "";
-            canvas_layout.right_image = "";
-            canvas_layout.speaker_right = "";
-            pre_load();
-            return;
-        }
-        load_idol(2);
-    });
 
 /*****************************************************************************************************************
 LOADING IDOL IMAGE FUNCTIONS
@@ -286,6 +112,7 @@ function append_idol(index, position)
     });
 }
 
+/* Calls append_idol to display idols to choose to place at give position */
 function load_idol(position)
 {
     position_as_int = position;
@@ -336,6 +163,59 @@ $("#image-list").on('click', 'img', function() {
     close_image_window();
 });
 
+function get_idol_group(position)
+{
+    var group = "muse";
+    switch($("#idol-list-"+position).val()) {
+        case 'chika':
+        case 'riko':
+        case 'you':
+        case 'hanamaru':
+        case 'ruby':
+        case 'yohane':
+        case 'dia':
+        case 'kanan':
+        case 'mari':
+            group = "aqours";
+            break;
+    }
+    return group;
+}
+
+/* Display all idols based on position */
+$("#idol-list-left").change(function() {
+    if ($("#idol-list-left").val() === "none") {
+        left_img.src = "";
+        canvas_layout.left_image = "";
+        canvas_layout.speaker_left = "";
+        pre_load();
+        return;
+    }
+    load_idol(0);
+});
+
+$("#idol-list-middle").change(function() {
+    if ($("#idol-list-middle").val() === "none") {
+        middle_img.src = "";
+        canvas_layout.middle_image = "";
+        canvas_layout.speaker_middle = "";
+        pre_load();
+        return;
+    }
+    load_idol(1);
+});
+
+$("#idol-list-right").change(function() {
+    if ($("#idol-list-right").val() === "none") {
+        right_img.src = "";
+        canvas_layout.right_image = "";
+        canvas_layout.speaker_right = "";
+        pre_load();
+        return;
+    }
+    load_idol(2);
+});
+
 /*****************************************************************************************************************
 LOADING BACKGROUND IMAGE FUNCTIONS
 *****************************************************************************************************************/
@@ -363,34 +243,6 @@ function load_bg()
     });
 }
 
-/* function load_bg_local()
-{
-    var file_ext = {};
-    file_ext[0]=".png";
-    var src = 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png';
-    $.ajax({
-        url: src,
-        success: function(data) {
-        //$("#image-list").append('<ul>');
-            //$("#image-list").empty();
-            //$("#image-list").hide();
-            $("#bg-list").empty();
-            $("#bg-list").show();
-            $("#bg-list").css("overflow-y", "scroll");
-            //$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
-            //	var filename = this.href.replace(window.location, "");
-                var bg = new Image();
-                bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
-
-                bg.onload = function() {
-                    $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
-                }
-        //});
-        //$("#image-list").append('</ul>');
-        }
-    });
-} */
-
 /* Applies Background to the canvas */
 $("#bg-list").on('click','img',function(){
     //window.open(this.src);
@@ -404,9 +256,26 @@ $("#bg-list").on('click','img',function(){
     bg.src = image.src;
     image.onload = function() {
         context.drawImage(image, 0, 0, image.width, image.height);
-        reset();
+        $("#speaker").find('option').not(':first').remove();
+        document.getElementById('idol-list-left').selectedIndex = 19;
+        document.getElementById('idol-list-middle').selectedIndex = 19;
+        document.getElementById('idol-list-right').selectedIndex = 19;
         close_image_window();
     };
+});
+
+/* When changing bg, reload */
+$("#change_bg").click(function() {
+    canvas_layout = {
+        background: "",
+        left_image: "",
+        middle_image: "",
+        right_image: "",
+        speaker_left: "",
+        speaker_middle: "",
+        speaker_right: ""
+    };
+    load_bg();
 });
 
 /* Renders canvas after image changes, i.e. Idol, bg, or text changes */
@@ -565,6 +434,16 @@ function pre_load() {
         }
     }
 }
+
+function reset() {
+    placement = [0,0,0];
+    $("#speaker").prop('selectedIndex', 0);
+    var select = document.getElementById("speaker");
+    for(var i = 1; i < select.length; i++) {
+        console.log(select.remove(i));
+    }
+}
+
 /*****************************************************************************************************************
 IMAGE DOWNLOAD FUNCTIONS
 *****************************************************************************************************************/
@@ -589,3 +468,136 @@ IMAGE DOWNLOAD FUNCTIONS
 		this.href = dataURL;
 	});
 });
+
+
+/*****************************************************************************************************************
+LOCAL TESTING FUNCTIONS
+*****************************************************************************************************************/
+
+/*
+    $("#search").click(function() {
+        var id = $("#get_by_id").val();
+        $("#image-list").empty();
+        $.getJSON('https://schoolido.lu/api/cards/'+id+'/', function(data) {
+            $("#image-list").show();
+            $("#image-list").append('<img src="'+data.transparent_image+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
+        });
+    });
+
+    function search_by_id()
+    {
+        var id = $("#get_by_id").val();
+        $("#image-list").empty();
+        $.getJSON('http://schoolido.lu/api/cards/'+id+'/', function(data) {
+            $("#image-list").show();
+            $("#image-list").append('<img src="'+data.transparent_image+'"style="width:'+184.32+'px; height:'+184.32+'px;display:inline-block;"/>');
+        });
+    }
+
+    function load_bg_tmp()
+    {
+        var d = new Date();
+        var finish_time;
+        var bg;
+        $("#bg-list").show();
+        $("#bg-list").css("overflow-y", "scroll");
+
+        var begin_time = d.getTime()
+        var url1 = 'https://maveys.github.io/assets/bg/bg (1).png';
+        bg = new Image();
+        bg.src = url1;
+        console.log(bg.src);
+        bg.onload = function() {
+            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+            finish_time = d.getTime();
+            console.log("START: "+begin_time);
+            console.log("FINSIH: "+finish_time);
+            console.log("PNG: " + (finish_time - begin_time));
+
+        }
+
+        begin_time = d.getTime();
+        var url2 = 'https://maveys.github.io/assets/bg/test.jpg';
+        bg = new Image();
+        bg.src = url2;
+        bg.onload = function() {
+            $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+            finish_time = d.getTime();
+            console.log("START: "+begin_time);
+            console.log("FINSIH: "+finish_time);
+            console.log("JPG: " + (finish_time - begin_time));
+        }
+    }
+
+	function tmp_load()
+	{
+			//$("#image-list").append('<ul>');
+				//$("#bg-list").hide();
+		var url = 'https://maveys.github.io/assets/girls/muse/honoka/honoka_01_01.png';
+		var idol = new Image();
+		idol.src = url;
+		idol.src = url;
+        idol.onload = function() {
+		    var width = idol.width * 0.18;
+		    var height = idol.height * 0.18;
+		    $("#image-list").append('<img src="'+idol.src+'"style="width:'+width+'px; height:'+height+'px;display:inline-block;"/>');
+        }
+
+	}
+
+    function load_bg_local()
+    {
+        var file_ext = {};
+        file_ext[0]=".png";
+        var src = 'https://maveys.github.io/assets/bg/001 - 2O1X0oi.png';
+        $.ajax({
+            url: src,
+            success: function(data) {
+            //$("#image-list").append('<ul>');
+                //$("#image-list").empty();
+                //$("#image-list").hide();
+                $("#bg-list").empty();
+                $("#bg-list").show();
+                $("#bg-list").css("overflow-y", "scroll");
+                //$(data).find("a:contains(" + file_ext[0] + ")").each(function () {
+                //	var filename = this.href.replace(window.location, "");
+                    var bg = new Image();
+                    bg.src = src;//"https://mavveys.github.io/assets/bg/"+filename;
+
+                    bg.onload = function() {
+                        $("#bg-list").append('<img src="'+ bg.src +'"style="width:'+bg.width*0.18+'px; height:'+bg.height*0.18+'px;display:inline-block;"/>');
+                    }
+            //});
+            //$("#image-list").append('</ul>');
+            }
+        });
+    }
+
+    function load_idol_local()
+    {
+        var file_ext = {};
+        file_ext[0]=".png";
+        $.ajax({
+            url: 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$("#idol-list").val()+'/',
+            success: function(data) {
+                //$("#image-list").append('<ul>');
+                //$("#bg-list").hide();
+                $("#image-list").empty();
+                //$("#bg-list").empty();
+                $("#image-list").show();
+                $("#image-list").css("overflow-y", "scroll");
+
+                $(data).find("a:contains(" + file_ext[0] + ")").each(function () {
+                    var filename = this.href.replace(window.location, "");
+                    var idol = new Image();
+                    idol.src = 'https://maveys.github.io/assets/girls/'+get_idol_group()+'/'+$('#idol-list').val()+'/'+filename;
+
+                    idol.onload = function() {
+                        $("#image-list").append('<img src="'+idol.src+'"style="width:'+idol.width*0.18+'; height:'+idol.height*0.18+';display:inline-block;"/>');
+                    }
+                });
+                //$("#image-list").append('</ul>');
+            }
+        });
+    }
+*/
