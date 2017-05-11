@@ -23,17 +23,6 @@ $(document).ready(function() {
         canvas = document.getElementById('scene');
         context = canvas.getContext('2d');
 
-        var text_1 = $("#story_text_1").val();
-        var text_2 = $("#story_text_2").val();
-        var text_3 = $("#story_text_3").val();
-        context.save()
-        context.font = "25px motoyalmaruw3_mono";
-        context.fillStyle = 'white';
-        context.shadowColor = 'black';
-        context.shadowOffsetX = 1;
-        context.shadowOffsetY = 2;
-        context.scale(1,1);
-
         if($("#speaker").val() === "-1") {
             $("#error").html("*Please select a speaker.");
             return;
@@ -46,6 +35,16 @@ $(document).ready(function() {
 
         image.onload = function() {
             context.drawImage(image, 50,640 - 175, image.width - 100, image.height);
+            var text_1 = $("#story_text_1").val();
+            var text_2 = $("#story_text_2").val();
+            var text_3 = $("#story_text_3").val();
+            context.save()
+            context.font = "25px motoyalmaruw3_mono";
+            context.fillStyle = 'white';
+            context.shadowColor = 'black';
+            context.shadowOffsetX = 1;
+            context.shadowOffsetY = 2;
+            context.scale(1,1);
             for (var i = 0; i < text_1.length; i++) {
                 context.fillText(text_1[i], 125 + (i * 15)  , 510);
                 encoder.addFrame(context);
