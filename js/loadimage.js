@@ -355,12 +355,17 @@ function add_text(context)
     context.shadowOffsetX = 1;
     context.shadowOffsetY = 2;
     context.scale(1,1);
-    context.fillText(text_1, 125, 510);
-    context.fillText(text_2, 125, 545);
-    context.fillText(text_3, 125, 580);
-    context.restore();
-
     add_idol_name();
+    for (var i = 0; i < text_1.length; i++) {
+        context.fillText(text_1[i], 125 + (i * 15)  , 510);
+    }
+    for (var i = 0; i < text_2.length; i++) {
+        context.fillText(text_2[i], 125 + (i * 15), 545);
+    }
+    for (var i = 0; i < text_3.length; i++) {
+        context.fillText(text_3[i], 125 + (i * 15), 580)
+    }
+    context.restore();
 }
 
 /* Applies text and speaker name to the canvas */
