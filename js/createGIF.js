@@ -69,6 +69,7 @@ $(document).ready(function() {
     $("#gif").click(function() {
         encoder.finish();
         encoder.download("scene.gif");
+        alert('gif downloaded');
     });
 
     function add_idol_name()

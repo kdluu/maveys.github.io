@@ -342,7 +342,7 @@ function add_idol_name()
     }
 }
 
-/* Applies text to the canvas */
+/* Applies text to the canvas - Why am I passing in context? */
 function add_text(context)
 {
     var text_1 = $("#story_text_1").val();
