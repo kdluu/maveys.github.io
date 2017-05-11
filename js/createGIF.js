@@ -62,9 +62,9 @@ $(document).ready(function() {
                 encoder.addFrame(context);
             }
             context.restore();
+            $("#error").html("");
+            alert("frame added");
         };
-        $("#error").html("");
-        alert("frame added");
     });
 
     $("#gif").click(function() {
