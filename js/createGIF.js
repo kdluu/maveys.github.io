@@ -6,14 +6,6 @@ $(document).ready(function() {
     var text_3;
     var length;
 
-    var type_text = function (id, text, index, interval) {
-        if (index < text.length) {
-            context.fillText(text[index++], 125, 510
-            );
-            setTimeout(function() {type_text(id, text, index, interval); }, interval);
-        }
-    }
-
     var encoder = new GIFEncoder();
     encoder.setRepeat(1); // repeat once
     encoder.setDelay(50); // every 1500 milliseconds new frame
