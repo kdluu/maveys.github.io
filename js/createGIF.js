@@ -42,7 +42,6 @@ $(document).ready(function() {
         var image = new Image();
         var canvas = document.getElementById('scene');
         var context = canvas.getContext('2d');
-        render_canvas();
         image.src = "https://maveys.github.io/assets/sprites/text.png";
 
         image.onload = function() {
