@@ -56,4 +56,27 @@ $(document).ready(function() {
         encoder.finish();
         encoder.download("scene.gif");
     });
+
+    function add_idol_name()
+    {
+        var image = new Image();
+        var context = document.getElementById('scene').getContext('2d');
+        image.src = "https://maveys.github.io/assets/sprites/idol.png";
+
+            image.onload = function() {
+            context.drawImage(image, 100, 640 - 225);
+            context.save();
+
+            var text = $("#speaker").val();
+            context.font = "25px motoyalmaruw3_mono";
+            context.fillStyle = 'white';
+            context.shadowColor = 'black';
+            context.shadowOffsetX = 1;
+            context.shadowOffsetY = 2;
+            context.scale(1,1);
+            context.fillText(text, 165, 450);
+            context.restore();
+        }
+    }
+
 });
