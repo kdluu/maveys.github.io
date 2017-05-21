@@ -43,46 +43,6 @@ $(document).ready(function() {
 
 	load_bg();
 
-	function load_help()
-	{
-		var context = document.getElementById('scene').getContext('2d');
-		var step_1 = "Step 1. Select a background image on the right.";
-		var step_1_cont = "Selecting one will reset current scene.";
-		var step_2 = "Step 2. Select a position then idol, default is left.";
-		var step_2_cont = "One idol per position.";
-		var step_3 = "Step 3. Enter text below.";
-		var step_4 = "Step 4. Select speaker. There must be a speaker.";
-		var step_5 = "Step 5. Click on 'Apply Text'.";
-		var notice_1 = "All changes are final unfortunately meaning if there is a mistake";
-		var notice_2 = "Either reselect another background or select restart";
-
-		context.save();
-		context.font = "25px motoyalmaruw3_mono";
-		context.fillStyle = 'white';
-		context.shadowColor = 'black';
-		context.shadowOffsetX = 1;
-		context.shadowOffsetY = 2;
-		context.scale(1,1);
-		context.fillText(step_1, 125, 25);
-		context.fillText(step_1_cont, 225, 75);
-		context.fillText(step_2, 125, 125);
-		context.fillText(step_2_cont, 225, 175);
-		context.fillText(step_3, 125, 225);
-		context.fillText(step_4, 125, 325);
-		context.fillText(step_5, 125, 425);
-		context.fillText(notice_1, 125, 525);
-		context.fillText(notice_2, 125, 575);
-		context.restore();
-	}
-
-	$("#restart").click(function() {
-		var canvas = document.getElementById('scene')
-		var context = canvas.getContext('2d');
-		context.clearRect(0,0,canvas.width,canvas.height);
-		load_help();
-		reset();
-	});
-
 /*****************************************************************************************************************
 LOADING IDOL IMAGE FUNCTIONS
 *****************************************************************************************************************/
@@ -448,6 +408,46 @@ function reset() {
         console.log(select.remove(i));
     }
 }
+
+function load_help()
+{
+    var context = document.getElementById('scene').getContext('2d');
+    var step_1 = "Step 1. Select a background image on the right.";
+    var step_1_cont = "Selecting one will reset current scene.";
+    var step_2 = "Step 2. Select a position then idol, default is left.";
+    var step_2_cont = "One idol per position.";
+    var step_3 = "Step 3. Enter text below.";
+    var step_4 = "Step 4. Select speaker. There must be a speaker.";
+    var step_5 = "Step 5. Click on 'Apply Text'.";
+    var notice_1 = "All changes are final unfortunately meaning if there is a mistake";
+    var notice_2 = "Either reselect another background or select restart";
+
+    context.save();
+    context.font = "25px motoyalmaruw3_mono";
+    context.fillStyle = 'white';
+    context.shadowColor = 'black';
+    context.shadowOffsetX = 1;
+    context.shadowOffsetY = 2;
+    context.scale(1,1);
+    context.fillText(step_1, 125, 25);
+    context.fillText(step_1_cont, 225, 75);
+    context.fillText(step_2, 125, 125);
+    context.fillText(step_2_cont, 225, 175);
+    context.fillText(step_3, 125, 225);
+    context.fillText(step_4, 125, 325);
+    context.fillText(step_5, 125, 425);
+    context.fillText(notice_1, 125, 525);
+    context.fillText(notice_2, 125, 575);
+    context.restore();
+}
+
+$("#restart").click(function() {
+    var canvas = document.getElementById('scene')
+    var context = canvas.getContext('2d');
+    context.clearRect(0,0,canvas.width,canvas.height);
+    load_help();
+    reset();
+});
 
 /*****************************************************************************************************************
 IMAGE DOWNLOAD FUNCTIONS

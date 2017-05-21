@@ -1,10 +1,4 @@
 $(document).ready(function() {
-    var canvas;
-    var context;
-    var text_1;
-    var text_2;
-    var text_3;
-    var length;
 
     var encoder = new GIFEncoder();
     encoder.setRepeat(1); // repeat once
